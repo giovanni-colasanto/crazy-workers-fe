@@ -7,7 +7,7 @@
         <span class="label-line" /><span>SUPPORT THE PROJECT</span><span class="label-line" />
       </div>
       <h2 class="reveal reveal-delay-1 section-title">
-        Keep the lights on ☕
+        Keep the lights on
       </h2>
       <p class="reveal reveal-delay-2 section-sub">
         crazy-workers is free and open-source. If it saves you time or powers your project,
@@ -29,15 +29,15 @@
           </a>
         </div>
 
-        <!-- Ko-fi -->
+        <!-- Stripe -->
         <div class="reveal reveal-delay-3 donate-card donate-card--secondary">
           <div class="dc-icon">
-            <v-icon icon="mdi-coffee-outline" size="36" color="#00F5FF" />
+            <v-icon icon="mdi-credit-card" size="36" color="#00F5FF" />
           </div>
-          <div class="dc-title">Ko-fi</div>
-          <div class="dc-desc">Buy me a one-time coffee, no account needed. Fast and easy.</div>
-          <a class="dc-btn secondary" href="https://ko-fi.com/vannibrouser" target="_blank">
-            Buy me a coffee
+          <div class="dc-title">Stripe</div>
+          <div class="dc-desc">Secure one-time or recurring donations via Stripe. Multiple payment methods supported.</div>
+          <a class="dc-btn secondary" href="https://buy.stripe.com/test_6oUcN5fzqazQ9eYezzgYU00" target="_blank">
+            Donate via Stripe
           </a>
         </div>
       </div>
