@@ -765,7 +765,7 @@ wait_for_pid_dead(res['pid'])`,
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 0.82rem;
-  color: rgba(224,224,255,0.55);
+  color: rgba(224,224,255,0.72);
   cursor: pointer;
   text-decoration: none;
   border-left: 2px solid transparent;
@@ -782,7 +782,7 @@ wait_for_pid_dead(res['pid'])`,
 .toc-foot { margin-top: 16px; padding: 0 12px; }
 .toc-back {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.78rem; color: rgba(224,224,255,0.45);
+  font-size: 0.78rem; color: rgba(224,224,255,0.68);
   text-decoration: none; transition: color 0.2s;
 }
 .toc-back:hover { color: #00F5FF; }
@@ -827,7 +827,7 @@ wait_for_pid_dead(res['pid'])`,
 }
 .docs-lead {
   font-size: 1.05rem; line-height: 1.7;
-  color: rgba(224,224,255,0.6); max-width: 680px; margin: 0 0 24px;
+  color: rgba(224,224,255,0.82); max-width: 680px; margin: 0 0 24px;
 }
 .docs-meta { display: flex; flex-wrap: wrap; gap: 8px; }
 .meta-pill {
@@ -840,7 +840,7 @@ wait_for_pid_dead(res['pid'])`,
   transition: background 0.2s, box-shadow 0.2s;
 }
 .meta-pill:hover { background: rgba(0,245,255,0.12); box-shadow: 0 0 14px rgba(0,245,255,0.2); }
-.meta-pill.static { color: rgba(224,224,255,0.55); border-color: rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); }
+.meta-pill.static { color: rgba(224,224,255,0.72); border-color: rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); }
 
 /* ── Sections ── */
 .doc-section {
@@ -869,14 +869,14 @@ wait_for_pid_dead(res['pid'])`,
 }
 .doc-p {
   font-size: 0.92rem; line-height: 1.75;
-  color: rgba(224,224,255,0.68); margin: 0 0 16px; max-width: 760px;
+  color: rgba(224,224,255,0.9); margin: 0 0 16px; max-width: 760px;
 }
 .doc-p strong { color: #E0E0FF; }
-.doc-muted { color: rgba(224,224,255,0.45); font-size: 0.85rem; }
+.doc-muted { color: rgba(224,224,255,0.68); font-size: 0.85rem; }
 .doc-ul, .doc-ol { margin: 0 0 18px; padding-left: 22px; max-width: 760px; }
 .doc-ul li, .doc-ol li {
   font-size: 0.9rem; line-height: 1.7;
-  color: rgba(224,224,255,0.62); margin-bottom: 9px;
+  color: rgba(224,224,255,0.85); margin-bottom: 9px;
 }
 .doc-ul li strong, .doc-ol li strong { color: #E0E0FF; }
 .doc-ul.tight { margin: 10px 0 4px; }
@@ -905,7 +905,7 @@ wait_for_pid_dead(res['pid'])`,
   margin: 0 0 18px; max-width: 760px;
 }
 .callout :deep(.v-icon) { flex-shrink: 0; margin-top: 1px; }
-.callout div { font-size: 0.85rem; line-height: 1.65; color: rgba(224,224,255,0.7); }
+.callout div { font-size: 0.85rem; line-height: 1.65; color: rgba(224,224,255,0.86); }
 .callout strong { color: #E0E0FF; }
 .callout.warn { background: rgba(255,184,0,0.05); border-color: rgba(255,184,0,0.2); }
 
@@ -918,7 +918,7 @@ wait_for_pid_dead(res['pid'])`,
   border-top: 2px solid var(--c);
 }
 .why-t { font-size: 0.9rem; font-weight: 700; color: #E0E0FF; margin: 12px 0 6px; }
-.why-d { font-size: 0.8rem; line-height: 1.6; color: rgba(224,224,255,0.45); }
+.why-d { font-size: 0.8rem; line-height: 1.6; color: rgba(224,224,255,0.68); }
 
 /* ── Generic tables ── */
 .table-wrap { overflow-x: auto; margin: 0 0 18px; max-width: 760px; }
@@ -936,17 +936,17 @@ wait_for_pid_dead(res['pid'])`,
 .g-row:not(.g-head):nth-child(even) { background: rgba(0,245,255,0.03); }
 .g-head {
   font-size: 0.66rem; font-weight: 700; letter-spacing: 1px;
-  text-transform: uppercase; color: rgba(224,224,255,0.4);
+  text-transform: uppercase; color: rgba(224,224,255,0.58);
   background: rgba(0,245,255,0.05);
 }
-.g-row span { color: rgba(224,224,255,0.6); line-height: 1.55; }
+.g-row span { color: rgba(224,224,255,0.82); line-height: 1.55; }
 .g-strong { color: #E0E0FF !important; font-weight: 600; }
 .g-row :deep(code) { font-size: 0.78em; }
 
 /* ── Returns line ── */
 .doc-returns {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  font-size: 0.85rem; color: rgba(224,224,255,0.6); margin: 0 0 16px;
+  font-size: 0.85rem; color: rgba(224,224,255,0.82); margin: 0 0 16px;
 }
 .doc-returns span {
   font-size: 0.62rem; font-weight: 700; letter-spacing: 1px;
@@ -991,7 +991,7 @@ wait_for_pid_dead(res['pid'])`,
 .pf-link {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.85rem; font-weight: 600;
-  color: rgba(224,224,255,0.6); text-decoration: none;
+  color: rgba(224,224,255,0.82); text-decoration: none;
   transition: color 0.2s;
 }
 .pf-link:hover { color: #00F5FF; }
