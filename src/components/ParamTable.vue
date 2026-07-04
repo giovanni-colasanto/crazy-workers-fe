@@ -37,13 +37,13 @@ defineProps({ rows: { type: Array, required: true } })
 .param-row:not(.head):nth-child(even) { background: rgba(0,245,255,0.03); }
 .param-row.head {
   font-size: 0.64rem; font-weight: 700; letter-spacing: 1px;
-  text-transform: uppercase; color: rgba(224,224,255,0.4);
+  text-transform: uppercase; color: rgba(224,224,255,0.58);
   background: rgba(0,245,255,0.05);
 }
 .p-name { font-family: 'JetBrains Mono', monospace; color: #BF00FF; font-size: 0.78rem; word-break: break-word; }
 .p-type { color: rgba(0,245,255,0.75); font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; }
 .p-def  { font-family: 'JetBrains Mono', monospace; color: #FFB800; font-size: 0.74rem; background: none; padding: 0; }
-.p-desc { color: rgba(224,224,255,0.55); line-height: 1.55; }
+.p-desc { color: rgba(224,224,255,0.82); line-height: 1.55; }
 
 @media (max-width: 560px) {
   .param-table { min-width: 0; }
