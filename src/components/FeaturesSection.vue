@@ -55,15 +55,18 @@ onMounted(() => {
 })
 
 const features = [
-  { icon: 'mdi-database-outline',    color: '#00F5FF', title: 'Persistent State',       desc: 'SQLite tracks worker status, PIDs, and parameters across app restarts — no in-memory state lost on reload.' },
-  { icon: 'mdi-refresh',             color: '#BF00FF', title: 'Automatic Recovery',     desc: 'Detects crashed workers on boot and restarts them automatically, with a file lock safe for Gunicorn.' },
-  { icon: 'mdi-console',             color: '#00F5FF', title: 'Built-in CLI',            desc: 'List, start, stop, and restore workers from the terminal with interactive prompts and auto-discovery.' },
+  { icon: 'mdi-sync',                color: '#BF00FF', title: 'Desired-State Model',    desc: 'Clients declare what should run; a single reconciler daemon owns the processes and drives reality to match — even across containers.' },
+  { icon: 'mdi-database-outline',    color: '#00F5FF', title: 'Persistent State',       desc: 'SQLite (or your own DB) tracks desired vs actual status, PIDs, and parameters across app restarts — nothing lost on reload.' },
+  { icon: 'mdi-refresh',             color: '#FFB800', title: 'Crash Recovery + Backoff', desc: 'The daemon restarts dead-but-RUNNING workers with exponential backoff, so an instantly-failing worker backs off instead of hot-looping.' },
+  { icon: 'mdi-database-sync-outline',color:'#FF0080', title: 'Backend Integration',    desc: 'Co-locate its tables in your database via a shared SQLAlchemy engine, and inject DATABASE_URL into every worker.' },
+  { icon: 'mdi-console',             color: '#00F5FF', title: 'Built-in CLI',            desc: 'status, start, stop, params, and the reconcile daemon from the terminal, with interactive prompts and worker auto-discovery.' },
+  { icon: 'mdi-flask-outline',       color: '#00FF88', title: 'Testable',               desc: 'Drive orchestration with a FakeBackend — no real processes — plus polling helpers for true end-to-end tests.' },
+  { icon: 'mdi-fingerprint',         color: '#BF00FF', title: 'PID-Reuse Safe',         desc: 'Each worker carries an identity token, so a recycled PID is never mistaken for — or killed as — a live worker.' },
   { icon: 'mdi-family-tree',         color: '#FF0080', title: 'Child Process Control',  desc: 'On stop, terminates unmanaged subprocesses while preserving independently-managed nested workers.' },
-  { icon: 'mdi-shield-check-outline',color: '#BF00FF', title: 'Security',               desc: 'Built-in protection against path traversal in worker type and key names.' },
-  { icon: 'mdi-file-document-outline',color:'#00F5FF', title: 'Per-worker Logging',     desc: 'All service files (DB, lock, logs) live in a .service/ folder. Each worker gets its own log file.' },
+  { icon: 'mdi-shield-check-outline',color: '#00F5FF', title: 'Security',               desc: 'Safe identifier charset plus a defence-in-depth path check that blocks traversal on Unix and Windows.' },
+  { icon: 'mdi-file-document-outline',color:'#BF00FF', title: 'Per-worker Logging',     desc: 'All service files (DB, lock, logs) live in a .service/ folder. Each worker gets its own log file.' },
   { icon: 'mdi-ghost-off-outline',   color: '#FF0080', title: 'Zombie Protection',      desc: 'Uses psutil to distinguish active processes from zombies — no false positives on status checks.' },
-  { icon: 'mdi-web',                 color: '#BF00FF', title: 'Framework-agnostic',     desc: 'Works with Flask, FastAPI, Django, or any Python app. Tested with Gunicorn pre-fork workers.' },
-  { icon: 'mdi-code-braces',         color: '#00F5FF', title: 'Simple API',             desc: 'start_worker, stop_worker, list_workers, recover_workers — four methods cover 95% of use cases.' },
+  { icon: 'mdi-web',                 color: '#00F5FF', title: 'Framework-agnostic',     desc: 'Works with Flask, FastAPI, Django, or any Python app. Gunicorn-safe via a file-based recovery lock.' },
 ]
 </script>
 

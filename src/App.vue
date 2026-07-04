@@ -6,12 +6,9 @@
     <AppNav />
 
     <v-main style="padding:0; padding-top:60px !important">
-      <HeroSection />
-      <FeaturesSection />
-      <QuickStartSection />
-      <DocsSection />
-      <ContributeSection />
-      <DonateSection />
+      <router-view v-slot="{ Component }">
+        <component :is="Component" />
+      </router-view>
     </v-main>
 
     <FooterSection />
@@ -22,19 +19,9 @@
   </v-app>
 </template>
 
-<style>
-/* No overflow rules on v-application — overflow-x: clip is set on html/body in style.css */
-</style>
-
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import AppNav         from './components/AppNav.vue'
-import HeroSection    from './components/HeroSection.vue'
-import FeaturesSection from './components/FeaturesSection.vue'
-import QuickStartSection from './components/QuickStartSection.vue'
-import DocsSection    from './components/DocsSection.vue'
-import ContributeSection from './components/ContributeSection.vue'
-import DonateSection  from './components/DonateSection.vue'
 import FooterSection  from './components/FooterSection.vue'
 import { useSnackbar } from './composables/useSnackbar'
 
