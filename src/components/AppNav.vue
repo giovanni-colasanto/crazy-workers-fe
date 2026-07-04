@@ -1,15 +1,18 @@
 <template>
   <nav class="cyber-nav" :class="{ scrolled }">
     <div class="nav-inner">
-      <span class="nav-logo gradient-text" @click="close(); scrollTo('hero')">
+      <span class="nav-logo gradient-text" @click="close(); goSection('hero')">
         <span class="logo-bracket">[</span>crazy-workers<span class="logo-bracket">]</span>
       </span>
 
       <!-- Desktop links -->
       <div class="nav-links">
-        <a v-for="link in links" :key="link.id" class="nav-link" @click="scrollTo(link.id)">
+        <a v-for="link in links" :key="link.id" class="nav-link" @click="goSection(link.id)">
           {{ link.label }}
         </a>
+        <RouterLink to="/docs" class="nav-link nav-link--docs" :class="{ active: isDocs }">
+          Docs
+        </RouterLink>
       </div>
 
       <div class="nav-actions">
@@ -34,11 +37,15 @@
           v-for="link in links"
           :key="link.id"
           class="mobile-link"
-          @click="close(); scrollTo(link.id)"
+          @click="close(); goSection(link.id)"
         >
           <v-icon icon="mdi-chevron-right" size="14" color="#00F5FF" />
           {{ link.label }}
         </a>
+        <RouterLink to="/docs" class="mobile-link" @click="close()">
+          <v-icon icon="mdi-book-open-variant" size="14" color="#BF00FF" />
+          Documentation
+        </RouterLink>
         <div class="mobile-divider" />
         <a class="mobile-link" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank">
           <v-icon icon="mdi-github" size="14" />
@@ -54,22 +61,39 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+const route  = useRoute()
+const router = useRouter()
 
 const scrolled  = ref(false)
 const menuOpen  = ref(false)
 
+const isDocs = computed(() => route.path === '/docs')
+
 const links = [
   { id: 'features',   label: 'Features'    },
   { id: 'quickstart', label: 'Quick Start' },
-  { id: 'docs',       label: 'API'         },
   { id: 'contribute', label: 'Contribute'  },
   { id: 'donate',     label: 'Donate'      },
 ]
 
-function onScroll()     { scrolled.value = window.scrollY > 30 }
-function close()        { menuOpen.value = false }
-function scrollTo(id)   { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }) }
+function onScroll()  { scrolled.value = window.scrollY > 30 }
+function close()     { menuOpen.value = false }
+
+// Scroll to a home-page section. If we're on another route, navigate home
+// first, then scroll once the section has mounted.
+async function goSection(id) {
+  if (route.path !== '/') {
+    await router.push('/')
+    await nextTick()
+    // give the home page a tick to render its sections
+    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 60)
+    return
+  }
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
 
 onMounted(()   => window.addEventListener('scroll', onScroll))
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
@@ -140,6 +164,15 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   white-space: nowrap;
 }
 .nav-link:hover { color: #00F5FF; background: rgba(0, 245, 255, 0.07); }
+
+/* Docs route link — accented to stand out as the secondary page */
+.nav-link--docs { color: #BF00FF; }
+.nav-link--docs:hover { color: #D84BFF; background: rgba(191, 0, 255, 0.08); }
+.nav-link--docs.active {
+  color: #D84BFF;
+  background: rgba(191, 0, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(191, 0, 255, 0.3);
+}
 
 .nav-actions {
   margin-left: auto;

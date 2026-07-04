@@ -84,8 +84,8 @@ function h(code) {
     .replace(/\b(import|from|def|return|if|for|in|as|with|class|True|False|None)\b/g, '<span data-t=kw>$1</span>')
     .replace(/("[^"]*"|'[^']*')/g,                                                     '<span data-t=str>$1</span>')
     .replace(/\b(\d+)\b/g,                                                             '<span data-t=num>$1</span>')
-    .replace(/\b(WorkerManager|Flask|request|jsonify)\b/g,                             '<span data-t=cls>$1</span>')
-    .replace(/\b(start_worker|stop_worker|list_workers|recover_workers|dispose|create_app|print|json\.loads|time\.sleep)\b/g, '<span data-t=fn>$1</span>')
+    .replace(/\b(WorkerManager|WorkerClient|FakeBackend|Flask|request|jsonify)\b/g,      '<span data-t=cls>$1</span>')
+    .replace(/\b(parse_params|request_start|request_stop|start_worker|stop_worker|list_workers|recover_workers|dispose|for_testing|create_app|is_running|start_count|crash|print|time\.sleep)\b/g, '<span data-t=fn>$1</span>')
     .replace(/\$(.*$)/gm,  '<span data-t=cli>$$$1</span>')
     .replace(/(#[^<\n]*)/g, '<span data-t=cm>$1</span>')
 }
@@ -93,11 +93,12 @@ function h(code) {
 const steps = [
   {
     label: '1. Create a worker script',
-    desc:  'A plain Python file that reads its params from sys.argv[1].',
+    desc:  'A plain Python file that reads its params with parse_params.',
     filename: 'workers/my_worker.py',
-    raw: `import json, sys, time
+    raw: `import time
+from crazy_workers import parse_params
 
-params = json.loads(sys.argv[1]) if len(sys.argv) > 1 else {}
+params = parse_params()   # JSON the daemon passed, as a dict
 duration = params.get('duration', 60)
 
 for _ in range(duration):
@@ -136,7 +137,7 @@ restarted = manager.recover_workers()`,
     label: '3. Or use the CLI',
     desc:  'Manage workers directly from your terminal — no code needed.',
     filename: 'terminal',
-    raw: `$ crazy-workers list
+    raw: `$ crazy-workers status
 
 $ crazy-workers start my_worker \\
     --key job_1 \\
@@ -144,19 +145,26 @@ $ crazy-workers start my_worker \\
 
 $ crazy-workers stop job_1
 
-$ crazy-workers restore`,
+$ crazy-workers params job_1`,
     get html() { return h(this.raw) },
   },
   {
     label: '4. Flask integration',
-    desc:  'Wire WorkerManager into a Flask app factory.',
+    desc:  'Co-locate state in your DB and recover workers on boot.',
     filename: 'app.py',
     raw: `from flask import Flask, request, jsonify
 from crazy_workers import WorkerManager
 
-def create_app():
+def create_app(db_engine, db_url):
     app = Flask(__name__)
-    manager = WorkerManager('workers')
+
+    manager = WorkerManager(
+        'workers',
+        engine=db_engine,                     # tables live in YOUR database
+        worker_env={'DATABASE_URL': db_url},  # injected into every worker
+        # auto_recover=True (default): workers left RUNNING with a
+        # dead PID are restored automatically when the app boots.
+    )
 
     @app.route('/workers/start', methods=['POST'])
     def start():
@@ -168,9 +176,25 @@ def create_app():
         )
         return (jsonify(result), 200) if ok else (jsonify({'error': result}), 400)
 
-    # Restart crashed workers on boot
-    manager.recover_workers()
     return app`,
+    get html() { return h(this.raw) },
+  },
+  {
+    label: '5. Test without processes',
+    desc:  'Drive orchestration with a FakeBackend — no real processes spawned.',
+    filename: 'test_workers.py',
+    raw: `from crazy_workers import WorkerManager
+
+def test_recovery_restarts_a_crash():
+    manager = WorkerManager.for_testing('workers')  # FakeBackend
+    manager.start_worker('recorder', worker_key='cam1')
+
+    manager.test.crash('cam1')   # simulate an unexpected death
+    manager.recover_workers()    # real recovery runs in-process
+
+    assert manager.test.start_count('cam1') == 2
+    assert manager.test.is_running('cam1')
+    manager.dispose()`,
     get html() { return h(this.raw) },
   },
 ]
