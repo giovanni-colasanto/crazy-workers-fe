@@ -87,7 +87,7 @@ const topics = [
   font-weight: 900; color: #E0E0FF; margin: 0 0 12px;
 }
 .section-sub {
-  color: rgba(224,224,255,0.5); margin: 0 auto 48px; max-width: 600px; line-height: 1.7;
+  color: rgba(224,224,255,0.85); margin: 0 auto 48px; max-width: 600px; line-height: 1.7;
 }
 
 .topics-grid {
@@ -136,7 +136,7 @@ const topics = [
 }
 .tc-body { flex: 1; min-width: 0; }
 .tc-title { font-size: 0.9rem; font-weight: 700; color: #E0E0FF; margin-bottom: 5px; }
-.tc-desc  { font-size: 0.78rem; color: rgba(224,224,255,0.42); line-height: 1.55; }
+.tc-desc  { font-size: 0.78rem; color: rgba(224,224,255,0.85); line-height: 1.55; }
 .tc-arrow {
   color: rgba(224,224,255,0.25);
   flex-shrink: 0;

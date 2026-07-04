@@ -936,7 +936,7 @@ wait_for_pid_dead(res['pid'])`,
 .g-row:not(.g-head):nth-child(even) { background: rgba(0,245,255,0.03); }
 .g-head {
   font-size: 0.66rem; font-weight: 700; letter-spacing: 1px;
-  text-transform: uppercase; color: rgba(224,224,255,0.58);
+  text-transform: uppercase; color: rgba(224,224,255,0.82);
   background: rgba(0,245,255,0.05);
 }
 .g-row span { color: rgba(224,224,255,0.82); line-height: 1.55; }

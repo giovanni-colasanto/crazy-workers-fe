@@ -166,7 +166,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 .nav-link:hover { color: #00F5FF; background: rgba(0, 245, 255, 0.07); }
 
 /* Docs route link — accented to stand out as the secondary page */
-.nav-link--docs { color: #BF00FF; }
+.nav-link--docs { color: #BF00FF; font-weight: 700; }
 .nav-link--docs:hover { color: #D84BFF; background: rgba(191, 0, 255, 0.08); }
 .nav-link--docs.active {
   color: #D84BFF;
@@ -260,7 +260,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   padding: 13px 24px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(224,224,255,0.6);
+  color: rgba(224,224,255,0.85);
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s, background 0.2s;

@@ -37,7 +37,7 @@ defineProps({ rows: { type: Array, required: true } })
 .param-row:not(.head):nth-child(even) { background: rgba(0,245,255,0.03); }
 .param-row.head {
   font-size: 0.64rem; font-weight: 700; letter-spacing: 1px;
-  text-transform: uppercase; color: rgba(224,224,255,0.58);
+  text-transform: uppercase; color: rgba(224,224,255,0.82);
   background: rgba(0,245,255,0.05);
 }
 .p-name { font-family: 'JetBrains Mono', monospace; color: #BF00FF; font-size: 0.78rem; word-break: break-word; }

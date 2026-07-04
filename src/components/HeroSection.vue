@@ -321,7 +321,7 @@ function copyInstall() {
 /* sub */
 .hero-sub {
   font-size: clamp(0.95rem, 2vw, 1.15rem);
-  color: rgba(224,224,255,0.6);
+  color: rgba(224,224,255,0.9);
   line-height: 1.7;
   max-width: 620px;
   margin: 0 auto 36px;
@@ -422,7 +422,7 @@ function copyInstall() {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: rgba(224,224,255,0.4);
+  color: rgba(224,224,255,0.8);
 }
 @media (max-width: 480px) {
   .hero-stats { gap: 8px; }

@@ -80,7 +80,7 @@ useScrollReveal()
   font-weight: 900; color: #E0E0FF; margin: 0 0 16px;
 }
 .section-sub {
-  color: rgba(224,224,255,0.5); font-size: 1rem; line-height: 1.7;
+  color: rgba(224,224,255,0.85); font-size: 1rem; line-height: 1.7;
   max-width: 480px; margin: 0 auto 48px;
 }
 
@@ -158,7 +158,7 @@ useScrollReveal()
 
 .dc-icon { margin-bottom: 16px; }
 .dc-title { font-size: 1.1rem; font-weight: 800; color: #E0E0FF; margin-bottom: 10px; }
-.dc-desc { font-size: 0.82rem; color: rgba(224,224,255,0.4); line-height: 1.6; margin-bottom: 24px; }
+.dc-desc { font-size: 0.82rem; color: rgba(224,224,255,0.85); line-height: 1.6; margin-bottom: 24px; }
 
 .dc-btn {
   display: block;
@@ -208,7 +208,7 @@ useScrollReveal()
 }
 .star-text {
   font-size: 0.85rem;
-  color: rgba(224,224,255,0.5);
+  color: rgba(224,224,255,0.85);
 }
 .star-btn {
   display: inline-flex; align-items: center; gap: 6px;
