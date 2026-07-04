@@ -114,7 +114,7 @@ const features = [
 }
 
 .section-sub {
-  color: rgba(224,224,255,0.5);
+  color: rgba(224,224,255,0.85);
   font-size: 1rem;
   line-height: 1.7;
   margin: 0 auto 60px;
@@ -199,7 +199,7 @@ const features = [
 
 .fc-desc {
   font-size: 0.81rem;
-  color: rgba(224,224,255,0.42);
+  color: rgba(224,224,255,0.85);
   line-height: 1.65;
 }
 </style>

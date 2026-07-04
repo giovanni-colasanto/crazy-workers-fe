@@ -350,14 +350,14 @@ function copyCode() {
 .step-title {
   font-size: 0.85rem;
   font-weight: 700;
-  color: rgba(224,224,255,0.55);
+  color: rgba(224,224,255,0.85);
   margin-bottom: 3px;
 }
 .qs-step.active .step-title { color: #E0E0FF; }
 
 .step-desc {
   font-size: 0.75rem;
-  color: rgba(224,224,255,0.3);
+  color: rgba(224,224,255,0.8);
   line-height: 1.5;
 }
 
@@ -367,7 +367,7 @@ function copyCode() {
 .terminal-filename {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
-  color: rgba(224,224,255,0.35);
+  color: rgba(224,224,255,0.72);
   margin-left: 8px;
   flex: 1;
 }
@@ -405,7 +405,7 @@ function copyCode() {
 .step-btn {
   background: rgba(0,245,255,0.05);
   border: 1px solid rgba(0,245,255,0.15);
-  color: rgba(224,224,255,0.6);
+  color: rgba(224,224,255,0.85);
   border-radius: 8px;
   padding: 6px 14px;
   font-size: 0.8rem;

@@ -83,7 +83,7 @@ const areas = [
   font-weight: 900; color: #E0E0FF; margin: 0 0 16px;
 }
 .section-sub {
-  color: rgba(224,224,255,0.5); font-size: 1rem; line-height: 1.7;
+  color: rgba(224,224,255,0.85); font-size: 1rem; line-height: 1.7;
   max-width: 520px; margin: 0 auto 48px;
 }
 
@@ -146,7 +146,7 @@ const areas = [
   font-size: 0.92rem; font-weight: 700; color: #E0E0FF; margin-bottom: 8px;
 }
 .area-desc {
-  font-size: 0.78rem; color: rgba(224,224,255,0.38); line-height: 1.65;
+  font-size: 0.78rem; color: rgba(224,224,255,0.85); line-height: 1.65;
 }
 
 .contrib-ctas {
