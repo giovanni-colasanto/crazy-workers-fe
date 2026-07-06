@@ -161,6 +161,16 @@
               Once a worker is observed alive a full pass after its spawn, the backoff resets to zero.
             </div>
           </div>
+          <div class="callout">
+            <v-icon icon="mdi-autorenew" size="18" color="#00F5FF" />
+            <div>
+              <strong>Parameter changes recycle the worker.</strong> Re-declaring a <code>RUNNING</code>
+              worker with different parameters updates its spec in the DB; the daemon compares that spec
+              against what the live process was <em>actually spawned with</em> (read back from its command
+              line) and, when they diverge, stops it — desired stays <code>RUNNING</code>, so the next pass
+              restarts it with the new parameters. A worker is never left silently running with a stale spec.
+            </div>
+          </div>
           <div class="callout warn">
             <v-icon icon="mdi-information-outline" size="18" color="#FFB800" />
             <div>
@@ -267,7 +277,7 @@
           <CodeBlock lang="bash" :code="code.cliStatus" />
 
           <h3 class="doc-h3"><code>start</code></h3>
-          <p class="doc-p"><em>Requests</em> a worker to run — it sets <code>desired_status = RUNNING</code>; the daemon starts it. If <code>worker_type</code> is omitted, presents an interactive list of available scripts.</p>
+          <p class="doc-p"><em>Requests</em> a worker to run — it sets <code>desired_status = RUNNING</code>; the daemon starts it. If <code>worker_type</code> is omitted, presents an interactive list of available scripts. Re-running <code>start</code> on a worker that is already <code>RUNNING</code> with different <code>--params</code> recycles it: the daemon restarts the process with the new parameters within a couple of reconcile passes.</p>
           <CodeBlock lang="bash" :code="code.cliStart" />
 
           <h3 class="doc-h3"><code>stop</code></h3>
@@ -539,7 +549,7 @@ const parseParamsParams = [
 
 const reconcileTable = [
   { d: 'RUNNING', a: 'no',  act: 'start it — or, if it just died, record the crash and back off before retrying' },
-  { d: 'RUNNING', a: 'yes', act: 'leave it running (and reset the backoff once it has proven healthy)' },
+  { d: 'RUNNING', a: 'yes', act: 'leave it running (and reset the backoff once it has proven healthy) — unless its parameters changed in the DB: then recycle it, so the next pass restarts it with the new spec' },
   { d: 'STOPPED', a: 'yes', act: 'stop it (SIGTERM → SIGKILL)' },
   { d: 'STOPPED', a: 'no',  act: 'nothing — converge a stale RUNNING/CRASHED status to STOPPED' },
 ]
