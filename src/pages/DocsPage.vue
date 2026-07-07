@@ -273,7 +273,8 @@
           <p class="doc-p doc-muted">Unlike the library, the CLI <strong>never creates</strong> the workers directory.</p>
 
           <h3 class="doc-h3"><code>status</code></h3>
-          <p class="doc-p">The observability hub. Shows the target state store (a shared DB, or the self-contained SQLite file) and a table of every worker — <strong>desired vs actual</strong>: desired status, observed status, PID, last action, and parameters.</p>
+          <p class="doc-p">The observability hub. Shows the target state store (a shared DB, or the self-contained SQLite file) and the worker table — <strong>effective status</strong>, PID, last action, and parameters. When the observed state diverges from the requested one, the row carries a pending note the daemon still has to resolve: <code>RUNNING (stop requested)</code>, <code>STOPPED (start pending)</code>, <code>CRASHED (restart pending)</code> — so a stop that never lands stays visible instead of hiding behind a stale desired value.</p>
+          <p class="doc-p">Stopped workers are history, not activity: only the <strong>2 most recently stopped</strong> rows are shown and the rest collapses into an explicit caption under the table. Nothing is deleted — <code>--all</code> shows every row, and <code>--json</code> always emits the full list including <code>desired_status</code>.</p>
           <CodeBlock lang="bash" :code="code.cliStatus" />
 
           <h3 class="doc-h3"><code>start</code></h3>
@@ -668,6 +669,8 @@ client.request_start('recorder', worker_key='cam1', parameters={'device_id': '1'
 # shared DB toward the desired state:
 #   python -m crazy_workers.daemon --workers-dir /app/workers --db-url $DATABASE_URL`,
   cliStatus: `crazy-workers status
+crazy-workers status --all
+crazy-workers status --json
 crazy-workers --workers-dir /path/to/workers status`,
   cliStart: `# Start by type (key defaults to worker_type)
 crazy-workers start example_worker
