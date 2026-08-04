@@ -1,30 +1,65 @@
 <template>
-  <nav class="cyber-nav" :class="{ scrolled }">
+  <nav
+    class="cyber-nav"
+    :class="{ scrolled }"
+  >
     <div class="nav-inner">
-      <span class="nav-logo gradient-text" @click="close(); goSection('hero')">
+      <span
+        class="nav-logo gradient-text"
+        @click="close(); goSection('hero')"
+      >
         <span class="logo-bracket">[</span>crazy-workers<span class="logo-bracket">]</span>
       </span>
 
       <!-- Desktop links -->
       <div class="nav-links">
-        <a v-for="link in links" :key="link.id" class="nav-link" @click="goSection(link.id)">
+        <a
+          v-for="link in links"
+          :key="link.id"
+          class="nav-link"
+          @click="goSection(link.id)"
+        >
           {{ link.label }}
         </a>
-        <RouterLink to="/docs" class="nav-link nav-link--docs" :class="{ active: isDocs }">
+        <RouterLink
+          to="/docs"
+          class="nav-link nav-link--docs"
+          :class="{ active: isDocs }"
+        >
           Docs
         </RouterLink>
       </div>
 
       <div class="nav-actions">
-        <a class="icon-btn" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank" title="GitHub">
-          <v-icon icon="mdi-github" size="18" />
+        <a
+          class="icon-btn"
+          href="https://github.com/Vanni-broUser/crazy-workers"
+          target="_blank"
+          title="GitHub"
+        >
+          <v-icon
+            icon="mdi-github"
+            size="18"
+          />
         </a>
-        <a class="nav-pip" href="https://pypi.org/project/crazy-workers/" target="_blank">
-          <v-icon icon="mdi-package-variant" size="14" />
+        <a
+          class="nav-pip"
+          href="https://pypi.org/project/crazy-workers/"
+          target="_blank"
+        >
+          <v-icon
+            icon="mdi-package-variant"
+            size="14"
+          />
           PyPI
         </a>
         <!-- Hamburger (mobile only) -->
-        <button class="hamburger" :class="{ open: menuOpen }" @click="menuOpen = !menuOpen" aria-label="Menu">
+        <button
+          class="hamburger"
+          :class="{ open: menuOpen }"
+          aria-label="Menu"
+          @click="menuOpen = !menuOpen"
+        >
           <span /><span /><span />
         </button>
       </div>
@@ -32,27 +67,56 @@
 
     <!-- Mobile drawer -->
     <Transition name="drawer">
-      <div v-if="menuOpen" class="mobile-menu">
+      <div
+        v-if="menuOpen"
+        class="mobile-menu"
+      >
         <a
           v-for="link in links"
           :key="link.id"
           class="mobile-link"
           @click="close(); goSection(link.id)"
         >
-          <v-icon icon="mdi-chevron-right" size="14" color="#00F5FF" />
+          <v-icon
+            icon="mdi-chevron-right"
+            size="14"
+            color="#00F5FF"
+          />
           {{ link.label }}
         </a>
-        <RouterLink to="/docs" class="mobile-link" @click="close()">
-          <v-icon icon="mdi-book-open-variant" size="14" color="#BF00FF" />
+        <RouterLink
+          to="/docs"
+          class="mobile-link"
+          @click="close()"
+        >
+          <v-icon
+            icon="mdi-book-open-variant"
+            size="14"
+            color="#BF00FF"
+          />
           Documentation
         </RouterLink>
         <div class="mobile-divider" />
-        <a class="mobile-link" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank">
-          <v-icon icon="mdi-github" size="14" />
+        <a
+          class="mobile-link"
+          href="https://github.com/Vanni-broUser/crazy-workers"
+          target="_blank"
+        >
+          <v-icon
+            icon="mdi-github"
+            size="14"
+          />
           GitHub
         </a>
-        <a class="mobile-link" href="https://pypi.org/project/crazy-workers/" target="_blank">
-          <v-icon icon="mdi-package-variant" size="14" />
+        <a
+          class="mobile-link"
+          href="https://pypi.org/project/crazy-workers/"
+          target="_blank"
+        >
+          <v-icon
+            icon="mdi-package-variant"
+            size="14"
+          />
           PyPI
         </a>
       </div>
@@ -61,42 +125,42 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-const route  = useRoute()
-const router = useRouter()
+const route  = useRoute();
+const router = useRouter();
 
-const scrolled  = ref(false)
-const menuOpen  = ref(false)
+const scrolled  = ref(false);
+const menuOpen  = ref(false);
 
-const isDocs = computed(() => route.path === '/docs')
+const isDocs = computed(() => route.path === '/docs');
 
 const links = [
   { id: 'features',   label: 'Features'    },
   { id: 'quickstart', label: 'Quick Start' },
   { id: 'contribute', label: 'Contribute'  },
   { id: 'donate',     label: 'Donate'      },
-]
+];
 
-function onScroll()  { scrolled.value = window.scrollY > 30 }
-function close()     { menuOpen.value = false }
+function onScroll()  { scrolled.value = window.scrollY > 30; }
+function close()     { menuOpen.value = false; }
 
 // Scroll to a home-page section. If we're on another route, navigate home
 // first, then scroll once the section has mounted.
 async function goSection(id) {
   if (route.path !== '/') {
-    await router.push('/')
-    await nextTick()
+    await router.push('/');
+    await nextTick();
     // give the home page a tick to render its sections
-    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 60)
-    return
+    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 60);
+    return;
   }
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
 
-onMounted(()   => window.addEventListener('scroll', onScroll))
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+onMounted(()   => window.addEventListener('scroll', onScroll));
+onUnmounted(() => window.removeEventListener('scroll', onScroll));
 </script>
 
 <style scoped>

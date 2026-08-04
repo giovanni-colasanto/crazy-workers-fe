@@ -1,17 +1,35 @@
 <template>
   <div class="docs-page">
     <!-- Mobile TOC toggle -->
-    <button class="toc-toggle" @click="tocOpen = !tocOpen">
-      <v-icon :icon="tocOpen ? 'mdi-close' : 'mdi-format-list-bulleted'" size="18" />
+    <button
+      class="toc-toggle"
+      @click="tocOpen = !tocOpen"
+    >
+      <v-icon
+        :icon="tocOpen ? 'mdi-close' : 'mdi-format-list-bulleted'"
+        size="18"
+      />
       <span>{{ activeLabel || 'On this page' }}</span>
-      <v-icon icon="mdi-chevron-down" size="18" class="toc-toggle-caret" :class="{ open: tocOpen }" />
+      <v-icon
+        icon="mdi-chevron-down"
+        size="18"
+        class="toc-toggle-caret"
+        :class="{ open: tocOpen }"
+      />
     </button>
 
     <div class="docs-shell">
       <!-- ───────── Sidebar index ───────── -->
-      <aside class="docs-toc" :class="{ open: tocOpen }">
+      <aside
+        class="docs-toc"
+        :class="{ open: tocOpen }"
+      >
         <div class="toc-head">
-          <v-icon icon="mdi-book-open-variant" size="16" color="#BF00FF" />
+          <v-icon
+            icon="mdi-book-open-variant"
+            size="16"
+            color="#BF00FF"
+          />
           Documentation
         </div>
         <nav class="toc-nav">
@@ -22,13 +40,22 @@
             :class="{ active: activeId === s.id }"
             @click="go(s.id)"
           >
-            <v-icon :icon="s.icon" size="15" />
+            <v-icon
+              :icon="s.icon"
+              size="15"
+            />
             <span>{{ s.label }}</span>
           </a>
         </nav>
         <div class="toc-foot">
-          <RouterLink to="/" class="toc-back">
-            <v-icon icon="mdi-arrow-left" size="14" /> Back to home
+          <RouterLink
+            to="/"
+            class="toc-back"
+          >
+            <v-icon
+              icon="mdi-arrow-left"
+              size="14"
+            /> Back to home
           </RouterLink>
         </div>
       </aside>
@@ -40,27 +67,54 @@
           <div class="section-label">
             <span>CRAZY-WORKERS</span><span class="label-line" />
           </div>
-          <h1 class="docs-title">The <span class="gradient-text">complete guide</span></h1>
+          <h1 class="docs-title">
+            The <span class="gradient-text">complete guide</span>
+          </h1>
           <p class="docs-lead">
             Everything you need to run background worker processes with persistent state,
             automatic crash recovery, boot-restore, and a built-in CLI — without Celery,
             Redis, or any extra infrastructure.
           </p>
           <div class="docs-meta">
-            <a class="meta-pill" href="https://pypi.org/project/crazy-workers/" target="_blank">
-              <v-icon icon="mdi-package-variant" size="14" /> PyPI
+            <a
+              class="meta-pill"
+              href="https://pypi.org/project/crazy-workers/"
+              target="_blank"
+            >
+              <v-icon
+                icon="mdi-package-variant"
+                size="14"
+              /> PyPI
             </a>
-            <a class="meta-pill" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank">
-              <v-icon icon="mdi-github" size="14" /> GitHub
+            <a
+              class="meta-pill"
+              href="https://github.com/Vanni-broUser/crazy-workers"
+              target="_blank"
+            >
+              <v-icon
+                icon="mdi-github"
+                size="14"
+              /> GitHub
             </a>
-            <span class="meta-pill static"><v-icon icon="mdi-language-python" size="14" /> Python 3.10+</span>
-            <span class="meta-pill static"><v-icon icon="mdi-license" size="14" /> MIT</span>
+            <span class="meta-pill static"><v-icon
+              icon="mdi-language-python"
+              size="14"
+            /> Python 3.10+</span>
+            <span class="meta-pill static"><v-icon
+              icon="mdi-license"
+              size="14"
+            /> MIT</span>
           </div>
         </div>
 
         <!-- ── Overview ── -->
-        <section id="overview" class="doc-section">
-          <h2 class="doc-h2">Overview</h2>
+        <section
+          id="overview"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Overview
+          </h2>
           <p class="doc-p">
             <strong>crazy-workers</strong> manages long-running background Python scripts as
             independent OS processes. It persists their state in SQLite (or your own database),
@@ -68,47 +122,107 @@
             API and a terminal CLI to drive it all.
           </p>
           <div class="callout">
-            <v-icon icon="mdi-lightbulb-on-outline" size="18" color="#FFB800" />
+            <v-icon
+              icon="mdi-lightbulb-on-outline"
+              size="18"
+              color="#FFB800"
+            />
             <div>
               <strong>The mental model:</strong> a worker is just a <code>.py</code> file in a
               <code>workers/</code> folder. You declare it should be running, and a
-              <a class="ilink" @click="go('model')">reconciler daemon</a> keeps a durable record of the
+              <a
+                class="ilink"
+                @click="go('model')"
+              >reconciler daemon</a> keeps a durable record of the
               <em>desired</em> state and drives the <em>actual</em> processes toward it — putting things
               back the way they were after a crash or reboot.
             </div>
           </div>
           <div class="why-grid">
-            <div v-for="w in why" :key="w.t" class="why-card" :style="`--c:${w.c}`">
-              <v-icon :icon="w.i" :color="w.c" size="20" />
-              <div class="why-t">{{ w.t }}</div>
-              <div class="why-d">{{ w.d }}</div>
+            <div
+              v-for="w in why"
+              :key="w.t"
+              class="why-card"
+              :style="`--c:${w.c}`"
+            >
+              <v-icon
+                :icon="w.i"
+                :color="w.c"
+                size="20"
+              />
+              <div class="why-t">
+                {{ w.t }}
+              </div>
+              <div class="why-d">
+                {{ w.d }}
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ── Installation ── -->
-        <section id="installation" class="doc-section">
-          <h2 class="doc-h2">Installation</h2>
-          <p class="doc-p">Install from PyPI:</p>
-          <CodeBlock lang="bash" :code="code.install" />
-          <p class="doc-p">Or from source:</p>
-          <CodeBlock lang="bash" :code="code.installSrc" />
+        <section
+          id="installation"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Installation
+          </h2>
+          <p class="doc-p">
+            Install from PyPI:
+          </p>
+          <CodeBlock
+            lang="bash"
+            :code="code.install"
+          />
+          <p class="doc-p">
+            Or from source:
+          </p>
+          <CodeBlock
+            lang="bash"
+            :code="code.installSrc"
+          />
         </section>
 
         <!-- ── Quick Start ── -->
-        <section id="quickstart" class="doc-section">
-          <h2 class="doc-h2">Quick Start</h2>
-          <p class="doc-p"><strong>1.</strong> Create a worker script — a plain Python file that reads its parameters with <code>parse_params</code>:</p>
-          <CodeBlock filename="workers/my_worker.py" :code="code.worker" />
-          <p class="doc-p"><strong>2.</strong> Manage it from Python:</p>
-          <CodeBlock filename="app.py" :code="code.manage" />
-          <p class="doc-p"><strong>3.</strong> Or straight from the terminal:</p>
-          <CodeBlock lang="bash" :code="code.cliQuick" />
+        <section
+          id="quickstart"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Quick Start
+          </h2>
+          <p class="doc-p">
+            <strong>1.</strong> Create a worker script — a plain Python file that reads its parameters with <code>parse_params</code>:
+          </p>
+          <CodeBlock
+            filename="workers/my_worker.py"
+            :code="code.worker"
+          />
+          <p class="doc-p">
+            <strong>2.</strong> Manage it from Python:
+          </p>
+          <CodeBlock
+            filename="app.py"
+            :code="code.manage"
+          />
+          <p class="doc-p">
+            <strong>3.</strong> Or straight from the terminal:
+          </p>
+          <CodeBlock
+            lang="bash"
+            :code="code.cliQuick"
+          />
         </section>
 
         <!-- ── Worker Contract ── -->
-        <section id="concepts" class="doc-section">
-          <h2 class="doc-h2">Worker Script Contract</h2>
+        <section
+          id="concepts"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Worker Script Contract
+          </h2>
           <p class="doc-p">
             A worker receives its parameters as a JSON string in <code>sys.argv[1]</code>. The
             <code>parse_params</code> helper reads and validates it for you:
@@ -124,8 +238,13 @@
         </section>
 
         <!-- ── Daemon & Reconciler ── -->
-        <section id="model" class="doc-section">
-          <h2 class="doc-h2">Daemon &amp; Reconciler</h2>
+        <section
+          id="model"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Daemon &amp; Reconciler
+          </h2>
           <p class="doc-p">
             crazy-workers separates <strong>who decides</strong> from <strong>who acts</strong>. Every
             worker row carries two states:
@@ -142,17 +261,36 @@
           </p>
           <div class="table-wrap">
             <div class="g-table model-table">
-              <div class="g-row g-head"><span>desired</span><span>alive</span><span>the daemon…</span></div>
-              <div v-for="r in reconcileTable" :key="r.d + r.a" class="g-row">
+              <div class="g-row g-head">
+                <span>desired</span><span>alive</span><span>the daemon…</span>
+              </div>
+              <div
+                v-for="r in reconcileTable"
+                :key="r.d + r.a"
+                class="g-row"
+              >
                 <span class="g-strong">{{ r.d }}</span><span>{{ r.a }}</span><span>{{ r.act }}</span>
               </div>
             </div>
           </div>
-          <p class="doc-p">Run the daemon as its own service; drive it with a <code>WorkerClient</code> (or the CLI):</p>
-          <CodeBlock lang="bash" filename="daemon (systemd unit / container)" :code="code.daemon" />
-          <CodeBlock filename="client.py" :code="code.client" />
+          <p class="doc-p">
+            Run the daemon as its own service; drive it with a <code>WorkerClient</code> (or the CLI):
+          </p>
+          <CodeBlock
+            lang="bash"
+            filename="daemon (systemd unit / container)"
+            :code="code.daemon"
+          />
+          <CodeBlock
+            filename="client.py"
+            :code="code.client"
+          />
           <div class="callout">
-            <v-icon icon="mdi-shield-refresh-outline" size="18" color="#BF00FF" />
+            <v-icon
+              icon="mdi-shield-refresh-outline"
+              size="18"
+              color="#BF00FF"
+            />
             <div>
               <strong>Crash backoff.</strong> When a <code>RUNNING</code> worker’s process dies, the daemon
               records the crash (<code>CRASHED</code>, <code>restart_count += 1</code>) and restarts it with
@@ -162,7 +300,11 @@
             </div>
           </div>
           <div class="callout">
-            <v-icon icon="mdi-autorenew" size="18" color="#00F5FF" />
+            <v-icon
+              icon="mdi-autorenew"
+              size="18"
+              color="#00F5FF"
+            />
             <div>
               <strong>Parameter changes recycle the worker.</strong> Re-declaring a <code>RUNNING</code>
               worker with different parameters updates its spec in the DB; the daemon compares that spec
@@ -172,7 +314,11 @@
             </div>
           </div>
           <div class="callout warn">
-            <v-icon icon="mdi-information-outline" size="18" color="#FFB800" />
+            <v-icon
+              icon="mdi-information-outline"
+              size="18"
+              color="#FFB800"
+            />
             <div>
               <strong>Embedded mode still exists.</strong> A <code>WorkerManager</code> can own the processes
               in-process (no separate daemon) for monolithic apps and tests — see the Python API below. The
@@ -182,26 +328,50 @@
         </section>
 
         <!-- ── Python API ── -->
-        <section id="api" class="doc-section">
-          <h2 class="doc-h2">Python API</h2>
+        <section
+          id="api"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Python API
+          </h2>
 
-          <h3 class="doc-h3"><code>WorkerManager(workers_dir, ...)</code></h3>
-          <p class="doc-p">Initialise the manager pointing at the folder containing your worker scripts.</p>
+          <h3 class="doc-h3">
+            <code>WorkerManager(workers_dir, ...)</code>
+          </h3>
+          <p class="doc-p">
+            Initialise the manager pointing at the folder containing your worker scripts.
+          </p>
           <ParamTable :rows="constructorParams" />
 
-          <h3 class="doc-h3"><code>WorkerManager.for_testing(workers_dir)</code></h3>
+          <h3 class="doc-h3">
+            <code>WorkerManager.for_testing(workers_dir)</code>
+          </h3>
           <p class="doc-p">
             Classmethod that wires a <strong>FakeBackend</strong>: spawning and termination are faked,
             but the state machine (SQLite, recovery, validation) stays real and runs in-process. The
-            backend is exposed as <code>manager.test</code>. See <a class="ilink" @click="go('testing')">Testing your app</a>.
+            backend is exposed as <code>manager.test</code>. See <a
+              class="ilink"
+              @click="go('testing')"
+            >Testing your app</a>.
           </p>
 
-          <h3 class="doc-h3"><code>start_worker(worker_type, worker_key=None, parameters=None, env=None, reset_backoff=True)</code></h3>
-          <p class="doc-p">Spawn a new background process running the named worker script. In embedded mode you call this directly; under the daemon model the reconciler calls it for you.</p>
+          <h3 class="doc-h3">
+            <code>start_worker(worker_type, worker_key=None, parameters=None, env=None, reset_backoff=True)</code>
+          </h3>
+          <p class="doc-p">
+            Spawn a new background process running the named worker script. In embedded mode you call this directly; under the daemon model the reconciler calls it for you.
+          </p>
           <ParamTable :rows="startParams" />
-          <p class="doc-returns"><span>returns</span> <code>(bool, dict | str)</code> — <code>(True, worker_dict)</code> on success, <code>(False, error_message)</code> on failure.</p>
+          <p class="doc-returns">
+            <span>returns</span> <code>(bool, dict | str)</code> — <code>(True, worker_dict)</code> on success, <code>(False, error_message)</code> on failure.
+          </p>
           <div class="callout warn">
-            <v-icon icon="mdi-alert-outline" size="18" color="#FFB800" />
+            <v-icon
+              icon="mdi-alert-outline"
+              size="18"
+              color="#FFB800"
+            />
             <div>
               <strong>Note on <code>RUNNING</code>:</strong> success means the worker was <em>spawned</em>
               and survived a brief startup grace period that catches immediate launch failures. It does
@@ -211,23 +381,45 @@
             </div>
           </div>
 
-          <h3 class="doc-h3"><code>stop_worker(worker_key)</code></h3>
-          <p class="doc-p">Gracefully terminates the worker (SIGTERM → SIGKILL after timeout). Unmanaged child processes are also terminated; independently-managed nested workers are preserved. Returns <code>(bool, str)</code>.</p>
+          <h3 class="doc-h3">
+            <code>stop_worker(worker_key)</code>
+          </h3>
+          <p class="doc-p">
+            Gracefully terminates the worker (SIGTERM → SIGKILL after timeout). Unmanaged child processes are also terminated; independently-managed nested workers are preserved. Returns <code>(bool, str)</code>.
+          </p>
 
-          <h3 class="doc-h3"><code>list_workers()</code></h3>
-          <p class="doc-p">Returns a list of worker dicts including <code>RUNNING</code>, <code>STOPPED</code>, <code>CRASHED</code>, and <code>NEVER_STARTED</code> (filesystem-discovered) workers.</p>
+          <h3 class="doc-h3">
+            <code>list_workers()</code>
+          </h3>
+          <p class="doc-p">
+            Returns a list of worker dicts including <code>RUNNING</code>, <code>STOPPED</code>, <code>CRASHED</code>, and <code>NEVER_STARTED</code> (filesystem-discovered) workers.
+          </p>
 
-          <h3 class="doc-h3"><code>recover_workers()</code></h3>
-          <p class="doc-p">Restarts any worker whose DB status is <code>RUNNING</code> but whose process is dead. Uses a file lock to prevent concurrent recovery. Returns a list of restarted keys.</p>
+          <h3 class="doc-h3">
+            <code>recover_workers()</code>
+          </h3>
+          <p class="doc-p">
+            Restarts any worker whose DB status is <code>RUNNING</code> but whose process is dead. Uses a file lock to prevent concurrent recovery. Returns a list of restarted keys.
+          </p>
           <div class="callout">
-            <v-icon icon="mdi-information-outline" size="18" color="#00F5FF" />
+            <v-icon
+              icon="mdi-information-outline"
+              size="18"
+              color="#00F5FF"
+            />
             <div>You rarely call this directly: it runs automatically when the manager is constructed (<code>auto_recover=True</code>) and after a machine reboot via the boot hook. It remains available as an explicit, idempotent trigger.</div>
           </div>
 
-          <h3 class="doc-h3"><code>dispose()</code></h3>
-          <p class="doc-p">Closes the database connection and clears internal process references. Does <strong>not</strong> kill background workers — they continue running independently.</p>
+          <h3 class="doc-h3">
+            <code>dispose()</code>
+          </h3>
+          <p class="doc-p">
+            Closes the database connection and clears internal process references. Does <strong>not</strong> kill background workers — they continue running independently.
+          </p>
 
-          <h3 class="doc-h3"><code>WorkerClient(db_url=None, engine=None, create_tables=False)</code></h3>
+          <h3 class="doc-h3">
+            <code>WorkerClient(db_url=None, engine=None, create_tables=False)</code>
+          </h3>
           <p class="doc-p">
             The <strong>control-plane client</strong> for the daemon model. It shares the daemon’s database and
             only touches the <code>workers</code> table — no processes, no boot hooks. Anything that is not the
@@ -236,93 +428,201 @@
           <ParamTable :rows="clientParams" />
           <div class="table-wrap">
             <div class="g-table test-table">
-              <div class="g-row g-head"><span>Method</span><span>What it does</span></div>
-              <div v-for="m in clientApi" :key="m.m" class="g-row">
+              <div class="g-row g-head">
+                <span>Method</span><span>What it does</span>
+              </div>
+              <div
+                v-for="m in clientApi"
+                :key="m.m"
+                class="g-row"
+              >
                 <span><code>{{ m.m }}</code></span><span>{{ m.r }}</span>
               </div>
             </div>
           </div>
-          <CodeBlock filename="client.py" :code="code.client" />
+          <CodeBlock
+            filename="client.py"
+            :code="code.client"
+          />
 
-          <h3 class="doc-h3"><code>parse_params(argv=None, required=())</code></h3>
+          <h3 class="doc-h3">
+            <code>parse_params(argv=None, required=())</code>
+          </h3>
           <p class="doc-p">
             Worker-side helper. Returns the parameters dict the daemon passed in <code>sys.argv[1]</code>. It is
             deliberately lightweight — importing it does <em>not</em> pull in the control plane or SQLAlchemy —
             so a worker script can <code>from crazy_workers import parse_params</code> with no heavy cost.
           </p>
           <ParamTable :rows="parseParamsParams" />
-          <p class="doc-returns"><span>returns</span> <code>dict</code> — the parsed parameters, or <code>{}</code> when launched with none (unless <code>required</code> is given, in which case a missing key exits the worker with code 1).</p>
-          <CodeBlock filename="workers/recorder.py" :code="code.parseParams" />
+          <p class="doc-returns">
+            <span>returns</span> <code>dict</code> — the parsed parameters, or <code>{}</code> when launched with none (unless <code>required</code> is given, in which case a missing key exits the worker with code 1).
+          </p>
+          <CodeBlock
+            filename="workers/recorder.py"
+            :code="code.parseParams"
+          />
         </section>
 
         <!-- ── CLI ── -->
-        <section id="cli" class="doc-section">
-          <h2 class="doc-h2">CLI Reference</h2>
+        <section
+          id="cli"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            CLI Reference
+          </h2>
           <p class="doc-p">
             The <code>crazy-workers</code> command manages workers directly from the terminal.
           </p>
 
-          <h3 class="doc-h3">Worker directory discovery</h3>
-          <p class="doc-p">The CLI resolves the workers directory through a tiered mechanism (highest priority first):</p>
+          <h3 class="doc-h3">
+            Worker directory discovery
+          </h3>
+          <p class="doc-p">
+            The CLI resolves the workers directory through a tiered mechanism (highest priority first):
+          </p>
           <ol class="doc-ol">
             <li><code>--workers-dir PATH</code> — must point to an existing directory.</li>
             <li><code>CRAZY_WORKERS_DIR</code> environment variable — shell or a local <code>.env</code>.</li>
             <li>Interactive prompt — in a TTY, asks for the path and saves it to <code>.env</code>.</li>
             <li>Auto-detection — a folder named <code>workers/</code> in the current directory.</li>
           </ol>
-          <p class="doc-p doc-muted">Unlike the library, the CLI <strong>never creates</strong> the workers directory.</p>
+          <p class="doc-p doc-muted">
+            Unlike the library, the CLI <strong>never creates</strong> the workers directory.
+          </p>
 
-          <h3 class="doc-h3"><code>status</code></h3>
-          <p class="doc-p">The observability hub. Shows the target state store (a shared DB, or the self-contained SQLite file) and the worker table — <strong>effective status</strong>, PID, last action, and parameters. When the observed state diverges from the requested one, the row carries a pending note the daemon still has to resolve: <code>RUNNING (stop requested)</code>, <code>STOPPED (start pending)</code>, <code>CRASHED (restart pending)</code> — so a stop that never lands stays visible instead of hiding behind a stale desired value.</p>
-          <p class="doc-p">Stopped workers are history, not activity: only the <strong>2 most recently stopped</strong> rows are shown and the rest collapses into an explicit caption under the table. Nothing is deleted — <code>--all</code> shows every row, and <code>--json</code> always emits the full list including <code>desired_status</code>.</p>
-          <CodeBlock lang="bash" :code="code.cliStatus" />
+          <h3 class="doc-h3">
+            <code>status</code>
+          </h3>
+          <p class="doc-p">
+            The observability hub. Shows the target state store (a shared DB, or the self-contained SQLite file) and the worker table — <strong>effective status</strong>, PID, last action, and parameters. When the observed state diverges from the requested one, the row carries a pending note the daemon still has to resolve: <code>RUNNING (stop requested)</code>, <code>STOPPED (start pending)</code>, <code>CRASHED (restart pending)</code> — so a stop that never lands stays visible instead of hiding behind a stale desired value.
+          </p>
+          <p class="doc-p">
+            Stopped workers are history, not activity: only the <strong>2 most recently stopped</strong> rows are shown and the rest collapses into an explicit caption under the table. Nothing is deleted — <code>--all</code> shows every row, and <code>--json</code> always emits the full list including <code>desired_status</code>.
+          </p>
+          <CodeBlock
+            lang="bash"
+            :code="code.cliStatus"
+          />
 
-          <h3 class="doc-h3"><code>start</code></h3>
-          <p class="doc-p"><em>Requests</em> a worker to run — it sets <code>desired_status = RUNNING</code>; the daemon starts it. If <code>worker_type</code> is omitted, presents an interactive list of available scripts. Re-running <code>start</code> on a worker that is already <code>RUNNING</code> with different <code>--params</code> recycles it: the daemon restarts the process with the new parameters within a couple of reconcile passes.</p>
-          <CodeBlock lang="bash" :code="code.cliStart" />
+          <h3 class="doc-h3">
+            <code>start</code>
+          </h3>
+          <p class="doc-p">
+            <em>Requests</em> a worker to run — it sets <code>desired_status = RUNNING</code>; the daemon starts it. If <code>worker_type</code> is omitted, presents an interactive list of available scripts. Re-running <code>start</code> on a worker that is already <code>RUNNING</code> with different <code>--params</code> recycles it: the daemon restarts the process with the new parameters within a couple of reconcile passes.
+          </p>
+          <CodeBlock
+            lang="bash"
+            :code="code.cliStart"
+          />
 
-          <h3 class="doc-h3"><code>stop</code></h3>
-          <p class="doc-p"><em>Requests</em> a worker to stop — it sets <code>desired_status = STOPPED</code>; the daemon terminates it (interactive if the key is omitted).</p>
-          <CodeBlock lang="bash" :code="code.cliStop" />
+          <h3 class="doc-h3">
+            <code>stop</code>
+          </h3>
+          <p class="doc-p">
+            <em>Requests</em> a worker to stop — it sets <code>desired_status = STOPPED</code>; the daemon terminates it (interactive if the key is omitted).
+          </p>
+          <CodeBlock
+            lang="bash"
+            :code="code.cliStop"
+          />
 
-          <h3 class="doc-h3"><code>params</code></h3>
-          <p class="doc-p">Displays the parameters a worker was started with, formatted as JSON.</p>
-          <CodeBlock lang="bash" :code="code.cliParams" />
+          <h3 class="doc-h3">
+            <code>params</code>
+          </h3>
+          <p class="doc-p">
+            Displays the parameters a worker was started with, formatted as JSON.
+          </p>
+          <CodeBlock
+            lang="bash"
+            :code="code.cliParams"
+          />
 
-          <h3 class="doc-h3"><code>daemon</code></h3>
-          <p class="doc-p">Runs the reconcile loop that <strong>owns the worker processes</strong>. Run exactly one per workers dir / shared DB (a systemd unit or its own container); the other commands are just clients that write desired state for it to act on.</p>
-          <CodeBlock lang="bash" :code="code.cliDaemon" />
+          <h3 class="doc-h3">
+            <code>daemon</code>
+          </h3>
+          <p class="doc-p">
+            Runs the reconcile loop that <strong>owns the worker processes</strong>. Run exactly one per workers dir / shared DB (a systemd unit or its own container); the other commands are just clients that write desired state for it to act on.
+          </p>
+          <CodeBlock
+            lang="bash"
+            :code="code.cliDaemon"
+          />
 
           <div class="callout">
-            <v-icon icon="mdi-information-outline" size="18" color="#00F5FF" />
-            <div><strong>No <code>restore</code> command.</strong> Under the daemon model, surviving a reboot is the deployment’s job — run the daemon as a service that restarts on boot. The legacy per-user boot hook (see <a class="ilink" @click="go('boot')">Boot-Restore</a>) and <code>manager.recover_workers()</code> remain for embedded use.</div>
+            <v-icon
+              icon="mdi-information-outline"
+              size="18"
+              color="#00F5FF"
+            />
+            <div>
+              <strong>No <code>restore</code> command.</strong> Under the daemon model, surviving a reboot is the deployment’s job — run the daemon as a service that restarts on boot. The legacy per-user boot hook (see <a
+                class="ilink"
+                @click="go('boot')"
+              >Boot-Restore</a>) and <code>manager.recover_workers()</code> remain for embedded use.
+            </div>
           </div>
 
-          <h3 class="doc-h3">Configuration via <code>.env</code></h3>
-          <CodeBlock lang="bash" :code="code.cliEnv" />
+          <h3 class="doc-h3">
+            Configuration via <code>.env</code>
+          </h3>
+          <CodeBlock
+            lang="bash"
+            :code="code.cliEnv"
+          />
         </section>
 
         <!-- ── Backend integration ── -->
-        <section id="backend" class="doc-section">
-          <h2 class="doc-h2">Backend Integration</h2>
-          <p class="doc-p">The recommended shape for a real backend is the <a class="ilink" @click="go('model')">daemon model</a>: your API is a <strong>client</strong> that only writes desired state, and a separate <strong>daemon</strong> process owns the workers. Both share one database, so the API can serve the files a worker produces while the daemon runs it — even from a different container.</p>
-          <CodeBlock filename="api + daemon" :code="code.reconciler" />
-          <p class="doc-p">Whichever mode you pick, three integration points let crazy-workers cooperate with your project instead of living off to the side:</p>
+        <section
+          id="backend"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Backend Integration
+          </h2>
+          <p class="doc-p">
+            The recommended shape for a real backend is the <a
+              class="ilink"
+              @click="go('model')"
+            >daemon model</a>: your API is a <strong>client</strong> that only writes desired state, and a separate <strong>daemon</strong> process owns the workers. Both share one database, so the API can serve the files a worker produces while the daemon runs it — even from a different container.
+          </p>
+          <CodeBlock
+            filename="api + daemon"
+            :code="code.reconciler"
+          />
+          <p class="doc-p">
+            Whichever mode you pick, three integration points let crazy-workers cooperate with your project instead of living off to the side:
+          </p>
           <ul class="doc-ul">
             <li><strong>Co-locate its tables in your database.</strong> Pass an existing SQLAlchemy <code>engine</code> (or a <code>db_url</code>) to the client, daemon, or manager. crazy-workers uses a single <code>workers</code> table inside your database and inherits its persistence and backups. A shared engine is never disposed by crazy-workers.</li>
             <li><strong>Give workers the connection they need.</strong> A worker can't receive a live DB connection — pass the configuration. <code>worker_env={'DATABASE_URL': ...}</code> is injected into every spawned worker (overridable per call via <code>start_worker(..., env=...)</code>).</li>
             <li><strong>Automatic crash recovery.</strong> The daemon restarts dead-but-<code>RUNNING</code> workers every reconcile pass (with backoff). In embedded mode, <code>auto_recover=True</code> (default) does the same when the manager is built, so a restarting backend brings its workers back with no explicit call.</li>
           </ul>
-          <CodeBlock filename="app.py (embedded mode)" :code="code.backend" />
+          <CodeBlock
+            filename="app.py (embedded mode)"
+            :code="code.backend"
+          />
         </section>
 
         <!-- ── Boot-restore ── -->
-        <section id="boot" class="doc-section">
-          <h2 class="doc-h2">Automatic Boot-Restore <span class="tag-legacy">legacy / opt-in</span></h2>
+        <section
+          id="boot"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Automatic Boot-Restore <span class="tag-legacy">legacy / opt-in</span>
+          </h2>
           <div class="callout warn">
-            <v-icon icon="mdi-information-outline" size="18" color="#FFB800" />
+            <v-icon
+              icon="mdi-information-outline"
+              size="18"
+              color="#FFB800"
+            />
             <div>
-              In the <a class="ilink" @click="go('model')">daemon model</a>, surviving a reboot is the
+              In the <a
+                class="ilink"
+                @click="go('model')"
+              >daemon model</a>, surviving a reboot is the
               deployment’s job — run the daemon as a systemd unit or a container with a restart policy.
               This per-worker hook is therefore <strong>opt-in</strong> and <code>auto_boot</code> defaults
               to <code>False</code>. It stays available for embedded, host-less setups.
@@ -330,20 +630,30 @@
           </div>
           <p class="doc-p">
             With <code>auto_boot=True</code>, starting a worker transparently installs a <strong>per-user OS
-            hook</strong> for its workers directory, so workers come back after a reboot without any host
+              hook</strong> for its workers directory, so workers come back after a reboot without any host
             application running. The hook calls <code>python -m crazy_workers.boot --workers-dir &lt;dir&gt;</code>,
             which runs <code>recover_workers()</code>. The install is best-effort and happens at most once per directory.
           </p>
           <div class="table-wrap">
             <div class="g-table boot-table">
-              <div class="g-row g-head"><span>Platform</span><span>Mechanism</span><span>When it runs</span></div>
-              <div v-for="b in bootTable" :key="b.platform" class="g-row">
+              <div class="g-row g-head">
+                <span>Platform</span><span>Mechanism</span><span>When it runs</span>
+              </div>
+              <div
+                v-for="b in bootTable"
+                :key="b.platform"
+                class="g-row"
+              >
                 <span class="g-strong">{{ b.platform }}</span><span>{{ b.mech }}</span><span>{{ b.when }}</span>
               </div>
             </div>
           </div>
           <div class="callout warn">
-            <v-icon icon="mdi-alert-outline" size="18" color="#FFB800" />
+            <v-icon
+              icon="mdi-alert-outline"
+              size="18"
+              color="#FFB800"
+            />
             <div>
               <strong>Unattended boot caveat.</strong> Recovery is durable across reboots, but running it
               <em>without any login</em> depends on the OS:
@@ -354,13 +664,22 @@
               <code>crazy-workers status</code> always reports whether the hook runs <strong>at boot</strong> or <strong>at login</strong>.
             </div>
           </div>
-          <p class="doc-p"><strong>Force-disable.</strong> Even where something opts in with <code>auto_boot=True</code>, setting <code>CRAZY_WORKERS_NO_BOOT</code> (any non-empty value) suppresses the install — useful in containers or CI.</p>
+          <p class="doc-p">
+            <strong>Force-disable.</strong> Even where something opts in with <code>auto_boot=True</code>, setting <code>CRAZY_WORKERS_NO_BOOT</code> (any non-empty value) suppresses the install — useful in containers or CI.
+          </p>
         </section>
 
         <!-- ── Gunicorn ── -->
-        <section id="gunicorn" class="doc-section">
-          <h2 class="doc-h2">Gunicorn / Multi-Process Servers</h2>
-          <p class="doc-p">When using a pre-fork server like Gunicorn:</p>
+        <section
+          id="gunicorn"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Gunicorn / Multi-Process Servers
+          </h2>
+          <p class="doc-p">
+            When using a pre-fork server like Gunicorn:
+          </p>
           <ul class="doc-ul">
             <li><strong>Recovery is atomic</strong> — a file lock (<code>.service/workers.db.recovery.lock</code>) ensures <code>recover_workers()</code> runs once even when multiple workers boot simultaneously.</li>
             <li><strong>Workers outlive their parent</strong> — if a Gunicorn worker is recycled, background processes keep running. The next recovery cycle re-attaches or restarts them.</li>
@@ -368,39 +687,77 @@
         </section>
 
         <!-- ── Testing ── -->
-        <section id="testing" class="doc-section">
-          <h2 class="doc-h2">Testing Your App</h2>
+        <section
+          id="testing"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Testing Your App
+          </h2>
           <p class="doc-p">
             Code that uses <code>WorkerManager</code> has two kinds of logic worth testing:
             <strong>orchestration</strong> (which workers start, pairing, rollback, recovery) and the
             <strong>work itself</strong>. <code>crazy_workers.testing</code> makes both fast and non-flaky.
           </p>
 
-          <h3 class="doc-h3">Orchestration — without launching a single process</h3>
-          <p class="doc-p"><code>WorkerManager.for_testing()</code> wires a FakeBackend: spawning and termination are faked, but the state machine stays real and runs in-process.</p>
-          <CodeBlock filename="test_orchestration.py" :code="code.testOrch" />
-          <p class="doc-p"><code>manager.test</code> exposes:</p>
+          <h3 class="doc-h3">
+            Orchestration — without launching a single process
+          </h3>
+          <p class="doc-p">
+            <code>WorkerManager.for_testing()</code> wires a FakeBackend: spawning and termination are faked, but the state machine stays real and runs in-process.
+          </p>
+          <CodeBlock
+            filename="test_orchestration.py"
+            :code="code.testOrch"
+          />
+          <p class="doc-p">
+            <code>manager.test</code> exposes:
+          </p>
           <div class="table-wrap">
             <div class="g-table test-table">
-              <div class="g-row g-head"><span>Member</span><span>Returns</span></div>
-              <div v-for="t in testApi" :key="t.m" class="g-row">
+              <div class="g-row g-head">
+                <span>Member</span><span>Returns</span>
+              </div>
+              <div
+                v-for="t in testApi"
+                :key="t.m"
+                class="g-row"
+              >
                 <span><code>{{ t.m }}</code></span><span>{{ t.r }}</span>
               </div>
             </div>
           </div>
 
-          <h3 class="doc-h3">The real thing — polling helpers, not <code>sleep</code></h3>
-          <p class="doc-p">The few tests that <em>must</em> launch real processes should wait on conditions, never fixed sleeps:</p>
-          <CodeBlock filename="test_end_to_end.py" :code="code.testReal" />
-          <p class="doc-p">Available helpers (each raises <code>AssertionError</code> with a useful message on timeout):</p>
+          <h3 class="doc-h3">
+            The real thing — polling helpers, not <code>sleep</code>
+          </h3>
+          <p class="doc-p">
+            The few tests that <em>must</em> launch real processes should wait on conditions, never fixed sleeps:
+          </p>
+          <CodeBlock
+            filename="test_end_to_end.py"
+            :code="code.testReal"
+          />
+          <p class="doc-p">
+            Available helpers (each raises <code>AssertionError</code> with a useful message on timeout):
+          </p>
           <div class="chip-row">
-            <code v-for="h in pollingHelpers" :key="h" class="chip">{{ h }}</code>
+            <code
+              v-for="h in pollingHelpers"
+              :key="h"
+              class="chip"
+            >{{ h }}</code>
           </div>
         </section>
 
         <!-- ── Logs ── -->
-        <section id="logs" class="doc-section">
-          <h2 class="doc-h2">Logs</h2>
+        <section
+          id="logs"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Logs
+          </h2>
           <p class="doc-p">
             Each worker's stdout/stderr is appended to <code>.service/logs/&lt;worker_key&gt;.log</code>.
             These files are written directly by the worker process, so the library does <strong>not</strong>
@@ -411,15 +768,24 @@
         </section>
 
         <!-- ── Security ── -->
-        <section id="security" class="doc-section">
-          <h2 class="doc-h2">Security</h2>
+        <section
+          id="security"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Security
+          </h2>
           <ul class="doc-ul">
             <li><strong>Safe identifier charset.</strong> Worker types and keys are restricted to <code>A-Z a-z 0-9 _ -</code>, with a defence-in-depth check that the resolved script path stays inside the workers directory. This blocks path traversal on both Unix and Windows (including drive-relative names like <code>c:evil</code>).</li>
             <li><strong>PID-reuse safe.</strong> Each worker is tagged with an identity token on its command line; recovery and stop confirm a PID still belongs to the worker before acting, so a recycled PID is never mistaken for — or killed as — a live worker.</li>
             <li><strong>Zombie protection.</strong> Active processes are distinguished from zombies using <code>psutil</code>.</li>
           </ul>
           <div class="callout warn">
-            <v-icon icon="mdi-shield-alert-outline" size="18" color="#FF3D71" />
+            <v-icon
+              icon="mdi-shield-alert-outline"
+              size="18"
+              color="#FF3D71"
+            />
             <div>
               <strong>Exposing <code>start_worker()</code> over HTTP is a privileged operation</strong> — anyone
               who can reach the route can launch any script in your workers directory. Put such routes behind
@@ -429,23 +795,59 @@
         </section>
 
         <!-- ── Support ── -->
-        <section id="support" class="doc-section">
-          <h2 class="doc-h2">Support the Project</h2>
-          <p class="doc-p">crazy-workers is free and open-source (MIT). If it saves you time, consider supporting its development:</p>
+        <section
+          id="support"
+          class="doc-section"
+        >
+          <h2 class="doc-h2">
+            Support the Project
+          </h2>
+          <p class="doc-p">
+            crazy-workers is free and open-source (MIT). If it saves you time, consider supporting its development:
+          </p>
           <div class="support-row">
-            <a class="support-btn" href="https://github.com/sponsors/Vanni-broUser" target="_blank">
-              <v-icon icon="mdi-heart" size="16" /> GitHub Sponsors
+            <a
+              class="support-btn"
+              href="https://github.com/sponsors/Vanni-broUser"
+              target="_blank"
+            >
+              <v-icon
+                icon="mdi-heart"
+                size="16"
+              /> GitHub Sponsors
             </a>
-            <a class="support-btn alt" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank">
-              <v-icon icon="mdi-star-outline" size="16" /> Star the repo
+            <a
+              class="support-btn alt"
+              href="https://github.com/Vanni-broUser/crazy-workers"
+              target="_blank"
+            >
+              <v-icon
+                icon="mdi-star-outline"
+                size="16"
+              /> Star the repo
             </a>
           </div>
         </section>
 
         <!-- Footer nav -->
         <div class="docs-pagefoot">
-          <RouterLink to="/" class="pf-link"><v-icon icon="mdi-arrow-left" size="16" /> Back to home</RouterLink>
-          <a class="pf-link" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank">View source on GitHub <v-icon icon="mdi-github" size="16" /></a>
+          <RouterLink
+            to="/"
+            class="pf-link"
+          >
+            <v-icon
+              icon="mdi-arrow-left"
+              size="16"
+            /> Back to home
+          </RouterLink>
+          <a
+            class="pf-link"
+            href="https://github.com/Vanni-broUser/crazy-workers"
+            target="_blank"
+          >View source on GitHub <v-icon
+            icon="mdi-github"
+            size="16"
+          /></a>
         </div>
       </main>
     </div>
@@ -453,12 +855,12 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
-import CodeBlock from '../components/CodeBlock.vue'
-import ParamTable from '../components/ParamTable.vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
+import CodeBlock from '../components/CodeBlock.vue';
+import ParamTable from '../components/ParamTable.vue';
 
-const route = useRoute()
+const route = useRoute();
 
 const sections = [
   { id: 'overview',     label: 'Overview',                 icon: 'mdi-book-open-page-variant-outline' },
@@ -475,51 +877,51 @@ const sections = [
   { id: 'logs',         label: 'Logs',                     icon: 'mdi-text-box-outline' },
   { id: 'security',     label: 'Security',                 icon: 'mdi-shield-check-outline' },
   { id: 'support',      label: 'Support',                  icon: 'mdi-heart-outline' },
-]
+];
 
 const why = [
   { i: 'mdi-cube-off-outline',   c: '#00F5FF', t: 'Zero infrastructure', d: 'No Celery, no Redis, no broker. Just Python processes and a SQLite file.' },
   { i: 'mdi-shield-refresh-outline', c: '#BF00FF', t: 'Survives everything', d: 'Crashes, app restarts, and machine reboots — workers come back on their own.' },
   { i: 'mdi-puzzle-outline',     c: '#FF0080', t: 'Drops into your stack', d: 'Flask, FastAPI, Django, or a plain script — and into your existing database.' },
-]
+];
 
-const activeId = ref('overview')
-const tocOpen = ref(false)
-const activeLabel = computed(() => sections.find(s => s.id === activeId.value)?.label)
+const activeId = ref('overview');
+const tocOpen = ref(false);
+const activeLabel = computed(() => sections.find(s => s.id === activeId.value)?.label);
 
 function go(id) {
-  tocOpen.value = false
-  const el = document.getElementById(id)
-  if (!el) return
-  const y = el.getBoundingClientRect().top + window.scrollY - 80
-  window.scrollTo({ top: y, behavior: 'smooth' })
-  activeId.value = id
+  tocOpen.value = false;
+  const el = document.getElementById(id);
+  if (!el) return;
+  const y = el.getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+  activeId.value = id;
 }
 
-let observer
+let observer;
 onMounted(() => {
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
-        if (e.isIntersecting) activeId.value = e.target.id
-      })
+        if (e.isIntersecting) activeId.value = e.target.id;
+      });
     },
     { rootMargin: '-80px 0px -65% 0px', threshold: 0 }
-  )
-  document.querySelectorAll('.doc-section').forEach((el) => observer.observe(el))
+  );
+  document.querySelectorAll('.doc-section').forEach((el) => observer.observe(el));
 
   // honour a deep-link hash (e.g. /docs#cli) after mount
   if (route.hash) {
-    const id = route.hash.slice(1)
-    nextTick(() => setTimeout(() => go(id), 80))
+    const id = route.hash.slice(1);
+    nextTick(() => setTimeout(() => go(id), 80));
   }
-})
-onUnmounted(() => observer?.disconnect())
+});
+onUnmounted(() => observer?.disconnect());
 
 // ── Param tables ──
 const constructorParams = [
-  { name: 'workers_dir',   type: 'str',            def: "'workers'", desc: 'Directory containing worker .py scripts.' },
-  { name: 'create_dir',    type: 'bool',           def: 'True',      desc: "Create workers_dir and .service/ if they don't exist." },
+  { name: 'workers_dir',   type: 'str',            def: '\'workers\'', desc: 'Directory containing worker .py scripts.' },
+  { name: 'create_dir',    type: 'bool',           def: 'True',      desc: 'Create workers_dir and .service/ if they don\'t exist.' },
   { name: 'backend',       type: 'ProcessBackend', def: 'None',      desc: 'Process backend; the default spawns real subprocesses (tests inject a fake).' },
   { name: 'auto_boot',     type: 'bool',           def: 'False',     desc: 'Opt-in legacy hook: install the per-user OS boot-restore hook on first start. In the daemon model, surviving a reboot is the deployment’s job.' },
   { name: 'boot_provider', type: 'BootProvider',   def: 'None',      desc: 'Override the boot-restore mechanism (mainly a test seam).' },
@@ -527,7 +929,7 @@ const constructorParams = [
   { name: 'engine',        type: 'Engine',         def: 'None',      desc: 'Reuse an existing SQLAlchemy engine so tables live in your DB; not disposed by crazy_workers.' },
   { name: 'worker_env',    type: 'dict',           def: 'None',      desc: 'Env vars injected into every spawned worker (e.g. DATABASE_URL).' },
   { name: 'auto_recover',  type: 'bool',           def: 'True',      desc: 'Recover dead-but-RUNNING workers when the manager is constructed (embedded mode).' },
-]
+];
 
 const startParams = [
   { name: 'worker_type',   type: 'str',  def: '—',           desc: 'Filename (without .py) of the worker script.' },
@@ -535,38 +937,38 @@ const startParams = [
   { name: 'parameters',    type: 'dict', def: '{}',          desc: 'JSON-serializable dict passed as sys.argv[1] to the worker.' },
   { name: 'env',           type: 'dict', def: 'None',        desc: 'Extra environment variables injected into the worker process.' },
   { name: 'reset_backoff', type: 'bool', def: 'True',        desc: 'Clear the crash backoff on a clean start. The reconciler passes False so an automatic restart keeps accumulating the backoff.' },
-]
+];
 
 const clientParams = [
   { name: 'db_url', type: 'str',    def: 'None', desc: 'SQLAlchemy URL of the shared state DB (mutually exclusive with engine).' },
   { name: 'engine', type: 'Engine', def: 'None', desc: 'Reuse an existing SQLAlchemy engine (e.g. your app’s), so the client writes to the same DB the daemon reads.' },
   { name: 'create_tables', type: 'bool', def: 'False', desc: 'Create the workers table. Usually False in production (a migration owns the schema).' },
-]
+];
 
 const parseParamsParams = [
   { name: 'argv',     type: 'list',  def: 'sys.argv', desc: 'Argument vector to read from; pass a list explicitly in tests.' },
   { name: 'required', type: 'tuple', def: '()',       desc: 'Keys that must be present and non-empty. A missing key aborts the worker (exit code 1) before it does any work.' },
-]
+];
 
 const reconcileTable = [
   { d: 'RUNNING', a: 'no',  act: 'start it — or, if it just died, record the crash and back off before retrying' },
   { d: 'RUNNING', a: 'yes', act: 'leave it running (and reset the backoff once it has proven healthy) — unless its parameters changed in the DB: then recycle it, so the next pass restarts it with the new spec' },
   { d: 'STOPPED', a: 'yes', act: 'stop it (SIGTERM → SIGKILL)' },
   { d: 'STOPPED', a: 'no',  act: 'nothing — converge a stale RUNNING/CRASHED status to STOPPED' },
-]
+];
 
 const bootTable = [
   { platform: 'Linux',   mech: 'systemd user unit (~/.config/systemd/user)', when: 'at user login — or at true boot if lingering is enabled' },
   { platform: 'Windows', mech: 'logon Scheduled Task (schtasks /SC ONLOGON)',  when: 'at user logon' },
-]
+];
 
 const clientApi = [
-  { m: "request_start(worker_type, worker_key=None, parameters=None)", r: 'declare a worker should be RUNNING (upsert its spec); returns the resolved worker_key' },
+  { m: 'request_start(worker_type, worker_key=None, parameters=None)', r: 'declare a worker should be RUNNING (upsert its spec); returns the resolved worker_key' },
   { m: 'request_stop(worker_key)', r: 'declare a worker should be STOPPED; False if it does not exist' },
   { m: 'list()', r: 'every worker row as a dict (desired + observed state)' },
   { m: 'get(worker_key)', r: 'a single worker dict, or None' },
   { m: 'dispose()', r: 'release the DB connection (a shared engine is left open)' },
-]
+];
 
 const testApi = [
   { m: 'started_types / started_keys', r: 'every spawn, in order (a restart appears twice)' },
@@ -575,12 +977,12 @@ const testApi = [
   { m: 'start_count(key)', r: 'how many times the key was (re)started' },
   { m: 'parameters_for(key)', r: 'parameters of the most recent spawn' },
   { m: 'crash(key)', r: 'simulate an unexpected death (without a stop)' },
-]
+];
 
 const pollingHelpers = [
   'wait_for', 'wait_for_file', 'wait_for_log', 'wait_for_worker_status',
   'wait_for_worker_in_db', 'wait_for_worker_pid', 'wait_for_pid_dead',
-]
+];
 
 // ── Code samples ──
 const code = {
@@ -734,7 +1136,7 @@ wait_for_log('workers/.service/logs/cam1.log', 'recording started')
 # ... assert the worker actually did its job ...
 manager.stop_worker('cam1')
 wait_for_pid_dead(res['pid'])`,
-}
+};
 </script>
 
 <style scoped>

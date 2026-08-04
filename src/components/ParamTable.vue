@@ -4,7 +4,11 @@
       <div class="param-row head">
         <span>Parameter</span><span>Type</span><span>Default</span><span>Description</span>
       </div>
-      <div v-for="p in rows" :key="p.name" class="param-row">
+      <div
+        v-for="p in rows"
+        :key="p.name"
+        class="param-row"
+      >
         <code class="p-name">{{ p.name }}</code>
         <span class="p-type">{{ p.type }}</span>
         <code class="p-def">{{ p.def }}</code>
@@ -15,7 +19,7 @@
 </template>
 
 <script setup>
-defineProps({ rows: { type: Array, required: true } })
+defineProps({ rows: { type: Array, required: true } });
 </script>
 
 <style scoped>

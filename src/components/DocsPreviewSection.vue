@@ -1,6 +1,12 @@
 <template>
-  <section id="docs" class="docs-section section-glow-top">
-    <div class="orb" style="width:350px;height:350px;background:radial-gradient(circle,rgba(0,245,255,0.06) 0%,transparent 70%);bottom:-80px;left:-80px;pointer-events:none;position:absolute" />
+  <section
+    id="docs"
+    class="docs-section section-glow-top"
+  >
+    <div
+      class="orb"
+      style="width:350px;height:350px;background:radial-gradient(circle,rgba(0,245,255,0.06) 0%,transparent 70%);bottom:-80px;left:-80px;pointer-events:none;position:absolute"
+    />
 
     <div class="docs-inner">
       <div class="reveal section-label">
@@ -24,23 +30,48 @@
           :style="`--c:${t.color}`"
         >
           <div class="tc-icon">
-            <v-icon :icon="t.icon" :color="t.color" size="20" />
+            <v-icon
+              :icon="t.icon"
+              :color="t.color"
+              size="20"
+            />
           </div>
           <div class="tc-body">
-            <div class="tc-title">{{ t.title }}</div>
-            <div class="tc-desc">{{ t.desc }}</div>
+            <div class="tc-title">
+              {{ t.title }}
+            </div>
+            <div class="tc-desc">
+              {{ t.desc }}
+            </div>
           </div>
-          <v-icon icon="mdi-arrow-top-right" size="16" class="tc-arrow" />
+          <v-icon
+            icon="mdi-arrow-top-right"
+            size="16"
+            class="tc-arrow"
+          />
         </RouterLink>
       </div>
 
       <div class="reveal reveal-delay-3 docs-ctas">
-        <RouterLink class="doc-btn primary" to="/docs">
-          <v-icon icon="mdi-book-open-variant" size="18" /> Open full documentation
+        <RouterLink
+          class="doc-btn primary"
+          to="/docs"
+        >
+          <v-icon
+            icon="mdi-book-open-variant"
+            size="18"
+          /> Open full documentation
           <span class="btn-shine" />
         </RouterLink>
-        <a class="doc-btn secondary" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank">
-          <v-icon icon="mdi-github" size="16" /> View on GitHub
+        <a
+          class="doc-btn secondary"
+          href="https://github.com/Vanni-broUser/crazy-workers"
+          target="_blank"
+        >
+          <v-icon
+            icon="mdi-github"
+            size="16"
+          /> View on GitHub
         </a>
       </div>
     </div>
@@ -48,8 +79,8 @@
 </template>
 
 <script setup>
-import { useScrollReveal } from '../composables/useScrollReveal'
-useScrollReveal()
+import { useScrollReveal } from '../composables/useScrollReveal';
+useScrollReveal();
 
 const topics = [
   { icon: 'mdi-code-braces',          color: '#00F5FF', title: 'Python API',          desc: 'WorkerManager and every method, parameter, and return value.',          to: '/docs#api' },
@@ -58,7 +89,7 @@ const topics = [
   { icon: 'mdi-restart',             color: '#FFB800', title: 'Boot-Restore',         desc: 'Per-user OS hooks bring workers back after a reboot.',                   to: '/docs#boot' },
   { icon: 'mdi-flask-outline',       color: '#00FF88', title: 'Testing',              desc: 'FakeBackend and polling helpers for fast, non-flaky tests.',            to: '/docs#testing' },
   { icon: 'mdi-shield-check-outline',color: '#00F5FF', title: 'Security & Logs',      desc: 'Path-traversal defence, PID-reuse safety, per-worker logs.',             to: '/docs#security' },
-]
+];
 </script>
 
 <style scoped>

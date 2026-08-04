@@ -1,6 +1,12 @@
 <template>
-  <section id="donate" class="donate-section section-glow-top">
-    <div class="orb" style="width:600px;height:300px;background:radial-gradient(ellipse,rgba(255,0,128,0.07) 0%,transparent 70%);top:0;left:50%;transform:translateX(-50%);pointer-events:none;position:absolute" />
+  <section
+    id="donate"
+    class="donate-section section-glow-top"
+  >
+    <div
+      class="orb"
+      style="width:600px;height:300px;background:radial-gradient(ellipse,rgba(255,0,128,0.07) 0%,transparent 70%);top:0;left:50%;transform:translateX(-50%);pointer-events:none;position:absolute"
+    />
 
     <div class="donate-inner">
       <div class="reveal section-label">
@@ -17,13 +23,27 @@
       <div class="donate-cards">
         <!-- GitHub Sponsors -->
         <div class="reveal reveal-delay-2 donate-card donate-card--primary">
-          <div class="dc-badge">RECOMMENDED</div>
-          <div class="dc-icon">
-            <v-icon icon="mdi-github" size="36" color="#E0E0FF" />
+          <div class="dc-badge">
+            RECOMMENDED
           </div>
-          <div class="dc-title">GitHub Sponsors</div>
-          <div class="dc-desc">Recurring or one-time support directly on GitHub. Helps track the project's sustainability.</div>
-          <a class="dc-btn primary" href="https://github.com/sponsors/Vanni-broUser" target="_blank">
+          <div class="dc-icon">
+            <v-icon
+              icon="mdi-github"
+              size="36"
+              color="#E0E0FF"
+            />
+          </div>
+          <div class="dc-title">
+            GitHub Sponsors
+          </div>
+          <div class="dc-desc">
+            Recurring or one-time support directly on GitHub. Helps track the project's sustainability.
+          </div>
+          <a
+            class="dc-btn primary"
+            href="https://github.com/sponsors/Vanni-broUser"
+            target="_blank"
+          >
             Sponsor on GitHub
             <span class="btn-shine" />
           </a>
@@ -32,11 +52,23 @@
         <!-- Stripe -->
         <div class="reveal reveal-delay-3 donate-card donate-card--secondary">
           <div class="dc-icon">
-            <v-icon icon="mdi-credit-card" size="36" color="#00F5FF" />
+            <v-icon
+              icon="mdi-credit-card"
+              size="36"
+              color="#00F5FF"
+            />
           </div>
-          <div class="dc-title">Stripe</div>
-          <div class="dc-desc">Secure one-time or recurring donations via Stripe. Multiple payment methods supported.</div>
-          <a class="dc-btn secondary" href="https://buy.stripe.com/test_6oUcN5fzqazQ9eYezzgYU00" target="_blank">
+          <div class="dc-title">
+            Stripe
+          </div>
+          <div class="dc-desc">
+            Secure one-time or recurring donations via Stripe. Multiple payment methods supported.
+          </div>
+          <a
+            class="dc-btn secondary"
+            href="https://buy.stripe.com/test_6oUcN5fzqazQ9eYezzgYU00"
+            target="_blank"
+          >
             Donate via Stripe
           </a>
         </div>
@@ -44,9 +76,19 @@
 
       <!-- Star -->
       <div class="reveal reveal-delay-4 star-section">
-        <div class="star-text">Even a ⭐ star on GitHub helps — it increases visibility and shows appreciation.</div>
-        <a class="star-btn" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank">
-          <v-icon icon="mdi-star-outline" size="16" color="#FFB800" />
+        <div class="star-text">
+          Even a ⭐ star on GitHub helps — it increases visibility and shows appreciation.
+        </div>
+        <a
+          class="star-btn"
+          href="https://github.com/Vanni-broUser/crazy-workers"
+          target="_blank"
+        >
+          <v-icon
+            icon="mdi-star-outline"
+            size="16"
+            color="#FFB800"
+          />
           Star on GitHub
         </a>
       </div>
@@ -55,8 +97,8 @@
 </template>
 
 <script setup>
-import { useScrollReveal } from '../composables/useScrollReveal'
-useScrollReveal()
+import { useScrollReveal } from '../composables/useScrollReveal';
+useScrollReveal();
 </script>
 
 <style scoped>

@@ -1,36 +1,55 @@
 <template>
   <div class="terminal code-wrap">
     <div class="terminal-bar">
-      <span class="terminal-dot" style="background:#FF5F57" />
-      <span class="terminal-dot" style="background:#FFBD2E" />
-      <span class="terminal-dot" style="background:#28CA41" />
+      <span
+        class="terminal-dot"
+        style="background:#FF5F57"
+      />
+      <span
+        class="terminal-dot"
+        style="background:#FFBD2E"
+      />
+      <span
+        class="terminal-dot"
+        style="background:#28CA41"
+      />
       <span class="terminal-filename">{{ filename || (lang === 'bash' ? 'terminal' : 'python') }}</span>
-      <button class="term-copy" @click="copy" :title="copied ? 'Copied!' : 'Copy'">
-        <v-icon :icon="copied ? 'mdi-check' : 'mdi-content-copy'" size="14"
-                :color="copied ? '#00FF88' : 'rgba(224,224,255,0.4)'" />
+      <button
+        class="term-copy"
+        :title="copied ? 'Copied!' : 'Copy'"
+        @click="copy"
+      >
+        <v-icon
+          :icon="copied ? 'mdi-check' : 'mdi-content-copy'"
+          size="14"
+          :color="copied ? '#00FF88' : 'rgba(224,224,255,0.4)'"
+        />
       </button>
     </div>
-    <pre class="terminal-pre code-block" v-html="rendered" />
+    <pre
+      class="terminal-pre code-block"
+      v-html="rendered"
+    />
   </div>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
-import { highlight } from '../composables/useHighlight'
+import { computed, ref } from 'vue';
+import { highlight } from '../composables/useHighlight';
 
 const props = defineProps({
   code:     { type: String, required: true },
   lang:     { type: String, default: 'python' },
   filename: { type: String, default: '' },
-})
+});
 
-const rendered = computed(() => highlight(props.code.trim(), props.lang))
-const copied = ref(false)
+const rendered = computed(() => highlight(props.code.trim(), props.lang));
+const copied = ref(false);
 
 function copy() {
-  navigator.clipboard.writeText(props.code.trim())
-  copied.value = true
-  setTimeout(() => { copied.value = false }, 2000)
+  navigator.clipboard.writeText(props.code.trim());
+  copied.value = true;
+  setTimeout(() => { copied.value = false; }, 2000);
 }
 </script>
 

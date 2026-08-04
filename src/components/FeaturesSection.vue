@@ -1,17 +1,23 @@
 <template>
-  <section id="features" class="features-section section-glow-top">
-    <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(191,0,255,0.07) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none;position:absolute" />
+  <section
+    id="features"
+    class="features-section section-glow-top"
+  >
+    <div
+      class="orb"
+      style="width:400px;height:400px;background:radial-gradient(circle,rgba(191,0,255,0.07) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none;position:absolute"
+    />
 
     <div class="features-inner">
       <div class="reveal section-label">
         <span class="label-line" /><span>WHY CRAZY-WORKERS</span><span class="label-line" />
       </div>
       <h2 class="reveal reveal-delay-1 section-title">
-        Everything a background worker needs.<br />
+        Everything a background worker needs.<br>
         <span class="gradient-text">Nothing it doesn't.</span>
       </h2>
       <p class="reveal reveal-delay-2 section-sub">
-        No Celery, no Redis, no infrastructure overhead.<br />
+        No Celery, no Redis, no infrastructure overhead.<br>
         Just Python processes that restart themselves.
       </p>
 
@@ -26,10 +32,18 @@
         >
           <div class="fc-glow" />
           <div class="fc-icon">
-            <v-icon :icon="f.icon" :color="f.color" size="22" />
+            <v-icon
+              :icon="f.icon"
+              :color="f.color"
+              size="22"
+            />
           </div>
-          <div class="fc-title">{{ f.title }}</div>
-          <div class="fc-desc">{{ f.desc }}</div>
+          <div class="fc-title">
+            {{ f.title }}
+          </div>
+          <div class="fc-desc">
+            {{ f.desc }}
+          </div>
         </div>
       </div>
     </div>
@@ -37,22 +51,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useScrollReveal } from '../composables/useScrollReveal'
-import { useTilt } from '../composables/useTilt'
+import { ref, onMounted } from 'vue';
+import { useScrollReveal } from '../composables/useScrollReveal';
+import { useTilt } from '../composables/useTilt';
 
-useScrollReveal()
+useScrollReveal();
 
-const cards = ref([])
+const cards = ref([]);
 
 onMounted(() => {
   // attach tilt after DOM settled
   setTimeout(() => {
     cards.value.forEach((el) => {
-      if (el) useTilt(el, 8)
-    })
-  }, 100)
-})
+      if (el) useTilt(el, 8);
+    });
+  }, 100);
+});
 
 const features = [
   { icon: 'mdi-sync',                color: '#BF00FF', title: 'Desired-State Model',    desc: 'Clients declare what should run; a single reconciler daemon owns the processes and drives reality to match — even across containers.' },
@@ -67,7 +81,7 @@ const features = [
   { icon: 'mdi-file-document-outline',color:'#BF00FF', title: 'Per-worker Logging',     desc: 'All service files (DB, lock, logs) live in a .service/ folder. Each worker gets its own log file.' },
   { icon: 'mdi-ghost-off-outline',   color: '#FF0080', title: 'Zombie Protection',      desc: 'Uses psutil to distinguish active processes from zombies — no false positives on status checks.' },
   { icon: 'mdi-web',                 color: '#00F5FF', title: 'Framework-agnostic',     desc: 'Works with Flask, FastAPI, Django, or any Python app. Gunicorn-safe via a file-based recovery lock.' },
-]
+];
 </script>
 
 <style scoped>

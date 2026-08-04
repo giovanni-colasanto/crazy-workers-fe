@@ -1,22 +1,22 @@
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted } from 'vue';
 
 export function useScrollReveal(selector = '.reveal') {
-  let observer
+  let observer;
 
   onMounted(() => {
     observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
-            e.target.classList.add('visible')
-            observer.unobserve(e.target)
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
           }
-        })
+        });
       },
       { threshold: 0.12 }
-    )
-    document.querySelectorAll(selector).forEach((el) => observer.observe(el))
-  })
+    );
+    document.querySelectorAll(selector).forEach((el) => observer.observe(el));
+  });
 
-  onUnmounted(() => observer?.disconnect())
+  onUnmounted(() => observer?.disconnect());
 }

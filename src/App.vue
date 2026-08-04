@@ -1,7 +1,10 @@
 <template>
   <v-app theme="cyber">
     <!-- Scroll progress bar -->
-    <div class="scroll-progress" :style="{ width: scrollPct + '%' }" />
+    <div
+      class="scroll-progress"
+      :style="{ width: scrollPct + '%' }"
+    />
 
     <AppNav />
 
@@ -13,31 +16,37 @@
 
     <FooterSection />
 
-    <v-snackbar v-model="snackbar.visible.value" :timeout="2500" location="bottom center" color="surface" rounded="pill">
+    <v-snackbar
+      v-model="snackbar.visible.value"
+      :timeout="2500"
+      location="bottom center"
+      color="surface"
+      rounded="pill"
+    >
       {{ snackbar.message.value }}
     </v-snackbar>
   </v-app>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import AppNav         from './components/AppNav.vue'
-import FooterSection  from './components/FooterSection.vue'
-import { useSnackbar } from './composables/useSnackbar'
+import { ref, onMounted, onUnmounted } from 'vue';
+import AppNav         from './components/AppNav.vue';
+import FooterSection  from './components/FooterSection.vue';
+import { useSnackbar } from './composables/useSnackbar';
 
-const snackbar = useSnackbar()
-const scrollPct = ref(0)
+const snackbar = useSnackbar();
+const scrollPct = ref(0);
 
 function onScroll() {
-  const h = document.documentElement.scrollHeight - window.innerHeight
-  scrollPct.value = h > 0 ? (window.scrollY / h) * 100 : 0
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  scrollPct.value = h > 0 ? (window.scrollY / h) * 100 : 0;
 }
 
-onMounted(()   => window.addEventListener('scroll', onScroll, { passive: true }))
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+onMounted(()   => window.addEventListener('scroll', onScroll, { passive: true }));
+onUnmounted(() => window.removeEventListener('scroll', onScroll));
 </script>
 
-<style>
+<style scoped>
 .scroll-progress {
   position: fixed;
   top: 0; left: 0;
