@@ -5,22 +5,51 @@
       <div class="footer-top-row">
         <span class="footer-logo gradient-text">[crazy-workers]</span>
         <div class="footer-icons">
-          <a class="footer-icon" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank" title="GitHub">
-            <v-icon icon="mdi-github" size="18" />
+          <a
+            class="footer-icon"
+            href="https://github.com/Vanni-broUser/crazy-workers"
+            target="_blank"
+            title="GitHub"
+          >
+            <v-icon
+              icon="mdi-github"
+              size="18"
+            />
           </a>
-          <a class="footer-icon" href="https://pypi.org/project/crazy-workers/" target="_blank" title="PyPI">
-            <v-icon icon="mdi-package-variant" size="18" />
+          <a
+            class="footer-icon"
+            href="https://pypi.org/project/crazy-workers/"
+            target="_blank"
+            title="PyPI"
+          >
+            <v-icon
+              icon="mdi-package-variant"
+              size="18"
+            />
           </a>
         </div>
       </div>
       <div class="footer-bottom-row">
         <span class="footer-copy">MIT License · Made with ❤ by
-          <a href="https://github.com/Vanni-broUser" target="_blank" class="footer-link">Vanni-broUser</a>
+          <a
+            href="https://github.com/Vanni-broUser"
+            target="_blank"
+            class="footer-link"
+          >Vanni-broUser</a>
         </span>
         <span class="footer-sep">·</span>
-        <a class="footer-powered" href="https://fastsite.it" target="_blank" title="Fast-Site">
+        <a
+          class="footer-powered"
+          href="https://fastsite.it"
+          target="_blank"
+          title="Fast-Site"
+        >
           Powered by <span class="footer-powered-name">Fast-Site</span>
-          <v-icon icon="mdi-web" size="13" class="footer-powered-icon" />
+          <v-icon
+            icon="mdi-web"
+            size="13"
+            class="footer-powered-icon"
+          />
         </a>
       </div>
     </div>

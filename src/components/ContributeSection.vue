@@ -1,6 +1,12 @@
 <template>
-  <section id="contribute" class="contrib-section section-glow-top cyber-grid">
-    <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(191,0,255,0.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;position:absolute" />
+  <section
+    id="contribute"
+    class="contrib-section section-glow-top cyber-grid"
+  >
+    <div
+      class="orb"
+      style="width:500px;height:500px;background:radial-gradient(circle,rgba(191,0,255,0.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;position:absolute"
+    />
 
     <div class="contrib-inner">
       <div class="reveal section-label">
@@ -20,24 +26,46 @@
           :key="a.title"
           class="reveal area-card"
           :class="`reveal-delay-${i + 1}`"
-        :style="`--c:${a.color}`"
+          :style="`--c:${a.color}`"
         >
           <div class="area-icon">
-            <v-icon :icon="a.icon" :color="a.color" size="22" />
+            <v-icon
+              :icon="a.icon"
+              :color="a.color"
+              size="22"
+            />
           </div>
-          <div class="area-title">{{ a.title }}</div>
-          <div class="area-desc">{{ a.desc }}</div>
+          <div class="area-title">
+            {{ a.title }}
+          </div>
+          <div class="area-desc">
+            {{ a.desc }}
+          </div>
         </div>
       </div>
 
       <div class="reveal reveal-delay-3 contrib-ctas">
-        <a class="contrib-btn primary" href="https://github.com/Vanni-broUser/crazy-workers/issues" target="_blank">
-          <v-icon icon="mdi-github" size="18" />
+        <a
+          class="contrib-btn primary"
+          href="https://github.com/Vanni-broUser/crazy-workers/issues"
+          target="_blank"
+        >
+          <v-icon
+            icon="mdi-github"
+            size="18"
+          />
           Browse open issues
           <span class="btn-shine" />
         </a>
-        <a class="contrib-btn secondary" href="https://github.com/Vanni-broUser/crazy-workers/blob/main/AI.md" target="_blank">
-          <v-icon icon="mdi-book-open-outline" size="18" />
+        <a
+          class="contrib-btn secondary"
+          href="https://github.com/Vanni-broUser/crazy-workers/blob/main/AI.md"
+          target="_blank"
+        >
+          <v-icon
+            icon="mdi-book-open-outline"
+            size="18"
+          />
           Read the standards
         </a>
       </div>
@@ -46,15 +74,15 @@
 </template>
 
 <script setup>
-import { useScrollReveal } from '../composables/useScrollReveal'
-useScrollReveal()
+import { useScrollReveal } from '../composables/useScrollReveal';
+useScrollReveal();
 
 const areas = [
   { icon: 'mdi-bug-outline',         color: '#FF3D71', title: 'Bug fixes',  desc: 'Find and squash issues, improve edge-case handling.' },
   { icon: 'mdi-flask-outline',       color: '#FFB800', title: 'Tests',      desc: 'Expand unit, integration, and edge-case test coverage.' },
   { icon: 'mdi-lightbulb-outline',   color: '#BF00FF', title: 'Features',   desc: 'Async support, metrics, new CLI commands, and more.' },
   { icon: 'mdi-text-box-outline',    color: '#00F5FF', title: 'Docs',       desc: 'Improve the README, CLI.md, docstrings, and examples.' },
-]
+];
 </script>
 
 <style scoped>

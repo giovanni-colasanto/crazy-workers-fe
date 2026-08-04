@@ -1,5 +1,8 @@
 <template>
-  <section id="hero" class="hero-section scanline-wrap cyber-grid">
+  <section
+    id="hero"
+    class="hero-section scanline-wrap cyber-grid"
+  >
     <!-- Particle network -->
     <ParticleNetwork />
 
@@ -24,7 +27,11 @@
         <div class="mascot-ring mascot-ring-outer" />
         <div class="mascot-ring mascot-ring-inner" />
         <div class="mascot-frame">
-          <img src="/crazy-snake.png" alt="crazy-workers mascot" class="mascot-img" />
+          <img
+            src="/crazy-snake.png"
+            alt="crazy-workers mascot"
+            class="mascot-img"
+          >
         </div>
       </div>
     </div>
@@ -32,17 +39,27 @@
     <!-- Content -->
     <div class="hero-content">
       <!-- Badge -->
-      <div class="reveal hero-badge" @click="copyInstall">
+      <div
+        class="reveal hero-badge"
+        @click="copyInstall"
+      >
         <span class="badge-dot" />
         <span class="badge-text">pip install crazy-workers</span>
-        <v-icon icon="mdi-content-copy" size="14" style="opacity:.5" />
+        <v-icon
+          icon="mdi-content-copy"
+          size="14"
+          style="opacity:.5"
+        />
       </div>
 
       <!-- Title -->
       <h1 class="reveal reveal-delay-1 hero-title">
         <span class="hero-title-line1">{{ line1 }}</span>
-        <br />
-        <span class="gradient-text" style="display:inline-block">{{ line2 }}</span>
+        <br>
+        <span
+          class="gradient-text"
+          style="display:inline-block"
+        >{{ line2 }}</span>
       </h1>
 
       <!-- Typed subtitle -->
@@ -56,33 +73,69 @@
 
       <!-- CTA buttons -->
       <div class="reveal reveal-delay-3 hero-ctas">
-        <a class="cta-primary" href="https://github.com/Vanni-broUser/crazy-workers" target="_blank">
-          <v-icon icon="mdi-github" size="18" />
+        <a
+          class="cta-primary"
+          href="https://github.com/Vanni-broUser/crazy-workers"
+          target="_blank"
+        >
+          <v-icon
+            icon="mdi-github"
+            size="18"
+          />
           GitHub
           <span class="cta-glow" />
         </a>
-        <button class="cta-secondary" @click="scrollTo('quickstart')">
-          <v-icon icon="mdi-play-circle-outline" size="18" />
+        <button
+          class="cta-secondary"
+          @click="scrollTo('quickstart')"
+        >
+          <v-icon
+            icon="mdi-play-circle-outline"
+            size="18"
+          />
           Quick Start
         </button>
-        <button class="cta-accent" @click="scrollTo('donate')">
-          <v-icon icon="mdi-heart" size="18" />
+        <button
+          class="cta-accent"
+          @click="scrollTo('donate')"
+        >
+          <v-icon
+            icon="mdi-heart"
+            size="18"
+          />
           Support
         </button>
       </div>
 
       <!-- Stats -->
       <div class="reveal reveal-delay-4 hero-stats">
-        <div v-for="s in stats" :key="s.label" class="stat-item">
-          <div class="stat-val gradient-text">{{ s.val }}</div>
-          <div class="stat-lbl">{{ s.label }}</div>
+        <div
+          v-for="s in stats"
+          :key="s.label"
+          class="stat-item"
+        >
+          <div class="stat-val gradient-text">
+            {{ s.val }}
+          </div>
+          <div class="stat-lbl">
+            {{ s.label }}
+          </div>
         </div>
       </div>
 
       <!-- Badges -->
       <div class="reveal reveal-delay-5 hero-badges">
-        <a v-for="b in badges" :key="b.alt" :href="b.href" target="_blank" class="badge-img">
-          <img :src="b.src" :alt="b.alt" />
+        <a
+          v-for="b in badges"
+          :key="b.alt"
+          :href="b.href"
+          target="_blank"
+          class="badge-img"
+        >
+          <img
+            :src="b.src"
+            :alt="b.alt"
+          >
         </a>
       </div>
     </div>
@@ -90,128 +143,138 @@
     <!-- Bottom fade -->
     <div class="hero-fade" />
 
-    <v-snackbar v-model="copied" timeout="2000" location="bottom center" color="surface" rounded="pill">
-      <v-icon icon="mdi-check-circle" color="success" class="mr-2" /> Copied to clipboard!
+    <v-snackbar
+      v-model="copied"
+      timeout="2000"
+      location="bottom center"
+      color="surface"
+      rounded="pill"
+    >
+      <v-icon
+        icon="mdi-check-circle"
+        color="success"
+        class="mr-2"
+      /> Copied to clipboard!
     </v-snackbar>
   </section>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import ParticleNetwork from './ParticleNetwork.vue'
-import { useScrollReveal } from '../composables/useScrollReveal'
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import ParticleNetwork from './ParticleNetwork.vue';
+import { useScrollReveal } from '../composables/useScrollReveal';
 
-useScrollReveal()
+useScrollReveal();
 
-const copied = ref(false)
+const copied = ref(false);
 
 // ── Draggable mascot ──────────────────────────────────────────────
-const mascotWrapRef = ref(null)
-const isDragging    = ref(false)
-const pos           = ref({ x: 0, y: 0 })   // center of mascot in hero coords
-const dragOffset    = ref({ x: 0, y: 0 })
-const HALF = 130   // half of the visual size (rings ~260px)
+const mascotWrapRef = ref(null);
+const isDragging    = ref(false);
+const pos           = ref({ x: 0, y: 0 });   // center of mascot in hero coords
+const dragOffset    = ref({ x: 0, y: 0 });
+const HALF = 130;   // half of the visual size (rings ~260px)
 
 function heroRect() {
-  return document.getElementById('hero').getBoundingClientRect()
+  return document.getElementById('hero').getBoundingClientRect();
 }
 
 function initPos() {
-  const r = heroRect()
-  const mobile = r.width < 680
+  const r = heroRect();
+  const mobile = r.width < 680;
 
   if (mobile) {
     // Centro orizzontale, nella zona alta tra nav e badge pip install
-    pos.value = { x: r.width / 2, y: HALF }
+    pos.value = { x: r.width / 2, y: HALF };
   } else {
     // Lato random (sinistra o destra) con altezza random
-    const onLeft  = Math.random() < 0.5
+    const onLeft  = Math.random() < 0.5;
     const xFrac   = onLeft
       ? 0.08 + Math.random() * 0.10   // 8–18 % da sinistra
-      : 0.82 + Math.random() * 0.10   // 82–92 % da sinistra
-    const yMin = HALF + 40
-    const yMax = r.height - HALF - 40
+      : 0.82 + Math.random() * 0.10;   // 82–92 % da sinistra
+    const yMin = HALF + 40;
+    const yMax = r.height - HALF - 40;
     pos.value = {
       x: r.width  * xFrac,
       y: yMin + Math.random() * (yMax - yMin),
-    }
+    };
   }
 }
 
 function clientXY(e) {
   return e.touches
     ? { x: e.touches[0].clientX, y: e.touches[0].clientY }
-    : { x: e.clientX,            y: e.clientY }
+    : { x: e.clientX,            y: e.clientY };
 }
 
 function onDragStart(e) {
-  isDragging.value = true
-  const { x: cx, y: cy } = clientXY(e)
-  const r = heroRect()
+  isDragging.value = true;
+  const { x: cx, y: cy } = clientXY(e);
+  const r = heroRect();
   dragOffset.value = {
     x: cx - r.left - pos.value.x,
     y: cy - r.top  - pos.value.y,
-  }
+  };
 }
 
 function onDragMove(e) {
-  if (!isDragging.value) return
-  e.preventDefault()
-  const { x: cx, y: cy } = clientXY(e)
-  const r = heroRect()
+  if (!isDragging.value) return;
+  e.preventDefault();
+  const { x: cx, y: cy } = clientXY(e);
+  const r = heroRect();
   pos.value = {
     x: Math.max(HALF, Math.min(r.width  - HALF, cx - r.left - dragOffset.value.x)),
     y: Math.max(HALF, Math.min(r.height - HALF, cy - r.top  - dragOffset.value.y)),
-  }
+  };
 }
 
-function onDragEnd() { isDragging.value = false }
+function onDragEnd() { isDragging.value = false; }
 
 const mascotStyle = computed(() => ({
   left:      pos.value.x + 'px',
   top:       pos.value.y + 'px',
   transform: 'translate(-50%, -50%)',
-}))
+}));
 
 onMounted(() => {
-  initPos()
-  window.addEventListener('mousemove',  onDragMove)
-  window.addEventListener('mouseup',    onDragEnd)
-  window.addEventListener('touchmove',  onDragMove, { passive: false })
-  window.addEventListener('touchend',   onDragEnd)
-  window.addEventListener('resize',     initPos)
-})
+  initPos();
+  window.addEventListener('mousemove',  onDragMove);
+  window.addEventListener('mouseup',    onDragEnd);
+  window.addEventListener('touchmove',  onDragMove, { passive: false });
+  window.addEventListener('touchend',   onDragEnd);
+  window.addEventListener('resize',     initPos);
+});
 
 onUnmounted(() => {
-  window.removeEventListener('mousemove',  onDragMove)
-  window.removeEventListener('mouseup',    onDragEnd)
-  window.removeEventListener('touchmove',  onDragMove)
-  window.removeEventListener('touchend',   onDragEnd)
-  window.removeEventListener('resize',     initPos)
-})
+  window.removeEventListener('mousemove',  onDragMove);
+  window.removeEventListener('mouseup',    onDragEnd);
+  window.removeEventListener('touchmove',  onDragMove);
+  window.removeEventListener('touchend',   onDragEnd);
+  window.removeEventListener('resize',     initPos);
+});
 // ─────────────────────────────────────────────────────────────────
-const line1 = 'Background workers'
-const line2 = 'that just survive.'
+const line1 = 'Background workers';
+const line2 = 'that just survive.';
 
 const stats = [
   { val: '0',     label: 'Infrastructure needed' },
   { val: '4',     label: 'API methods' },
   { val: '< 60s', label: 'Setup time' },
   { val: 'MIT',   label: 'License' },
-]
+];
 
 const badges = [
   { href: 'https://pypi.org/project/crazy-workers/', src: 'https://img.shields.io/pypi/v/crazy-workers?style=flat-square&color=00F5FF&labelColor=0E0E2A', alt: 'PyPI' },
   { href: 'https://pypi.org/project/crazy-workers/', src: 'https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square&labelColor=0E0E2A', alt: 'Python 3.10+' },
   { href: 'https://github.com/Vanni-broUser/crazy-workers/blob/main/LICENSE', src: 'https://img.shields.io/badge/License-MIT-BF00FF?style=flat-square&labelColor=0E0E2A', alt: 'MIT' },
   { href: 'https://github.com/Vanni-broUser/crazy-workers/actions', src: 'https://img.shields.io/github/actions/workflow/status/Vanni-broUser/crazy-workers/ci.yml?style=flat-square&label=CI&labelColor=0E0E2A', alt: 'CI' },
-]
+];
 
-function scrollTo(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }) }
+function scrollTo(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); }
 
 function copyInstall() {
-  navigator.clipboard.writeText('pip install crazy-workers')
-  copied.value = true
+  navigator.clipboard.writeText('pip install crazy-workers');
+  copied.value = true;
 }
 </script>
 

@@ -1,5 +1,8 @@
 <template>
-  <section id="quickstart" class="qs-section section-glow-top cyber-grid">
+  <section
+    id="quickstart"
+    class="qs-section section-glow-top cyber-grid"
+  >
     <div class="qs-inner">
       <div class="reveal section-label">
         <span class="label-line" /><span>GET STARTED IN 2 MINUTES</span><span class="label-line" />
@@ -18,10 +21,16 @@
             :class="{ active: activeStep === i }"
             @click="selectStep(i)"
           >
-            <div class="step-num">{{ String(i + 1).padStart(2, '0') }}</div>
+            <div class="step-num">
+              {{ String(i + 1).padStart(2, '0') }}
+            </div>
             <div>
-              <div class="step-title">{{ step.label }}</div>
-              <div class="step-desc">{{ step.desc }}</div>
+              <div class="step-title">
+                {{ step.label }}
+              </div>
+              <div class="step-desc">
+                {{ step.desc }}
+              </div>
             </div>
           </div>
         </div>
@@ -30,33 +39,72 @@
         <div class="qs-terminal reveal reveal-delay-3">
           <div class="terminal">
             <div class="terminal-bar">
-              <span class="terminal-dot" style="background:#FF5F57" />
-              <span class="terminal-dot" style="background:#FFBD2E" />
-              <span class="terminal-dot" style="background:#28CA41" />
+              <span
+                class="terminal-dot"
+                style="background:#FF5F57"
+              />
+              <span
+                class="terminal-dot"
+                style="background:#FFBD2E"
+              />
+              <span
+                class="terminal-dot"
+                style="background:#28CA41"
+              />
               <span class="terminal-filename">{{ steps[activeStep].filename }}</span>
-              <button class="term-copy" @click="copyCode" title="Copy">
-                <v-icon :icon="justCopied ? 'mdi-check' : 'mdi-content-copy'" size="14" :color="justCopied ? '#00FF88' : 'rgba(224,224,255,0.4)'" />
+              <button
+                class="term-copy"
+                title="Copy"
+                @click="copyCode"
+              >
+                <v-icon
+                  :icon="justCopied ? 'mdi-check' : 'mdi-content-copy'"
+                  size="14"
+                  :color="justCopied ? '#00FF88' : 'rgba(224,224,255,0.4)'"
+                />
               </button>
             </div>
-            <pre class="terminal-pre code-block" v-html="steps[activeStep].html" />
+            <pre
+              class="terminal-pre code-block"
+              v-html="steps[activeStep].html"
+            />
           </div>
 
           <!-- Navigation -->
           <div class="step-nav">
-            <button class="step-btn" :disabled="activeStep === 0" @click="activeStep--">
-              <v-icon icon="mdi-chevron-left" size="16" /> Prev
+            <button
+              class="step-btn"
+              :disabled="activeStep === 0"
+              @click="activeStep--"
+            >
+              <v-icon
+                icon="mdi-chevron-left"
+                size="16"
+              /> Prev
             </button>
             <div class="step-dots">
               <span
-                v-for="(_, i) in steps" :key="i"
+                v-for="(_, i) in steps"
+                :key="i"
                 class="step-dot"
                 :class="{ active: activeStep === i }"
                 @click="selectStep(i)"
               />
             </div>
-            <span v-if="activeStep < steps.length - 1" class="scroll-hint-arrow" aria-hidden="true">›</span>
-            <button class="step-btn" :disabled="activeStep === steps.length - 1" @click="activeStep++">
-              Next <v-icon icon="mdi-chevron-right" size="16" />
+            <span
+              v-if="activeStep < steps.length - 1"
+              class="scroll-hint-arrow"
+              aria-hidden="true"
+            >›</span>
+            <button
+              class="step-btn"
+              :disabled="activeStep === steps.length - 1"
+              @click="activeStep++"
+            >
+              Next <v-icon
+                icon="mdi-chevron-right"
+                size="16"
+              />
             </button>
           </div>
         </div>
@@ -66,15 +114,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useScrollReveal } from '../composables/useScrollReveal'
+import { ref } from 'vue';
+import { useScrollReveal } from '../composables/useScrollReveal';
 
-useScrollReveal()
+useScrollReveal();
 
-const activeStep = ref(0)
-const justCopied = ref(false)
+const activeStep = ref(0);
+const justCopied = ref(false);
 
-function selectStep(i) { activeStep.value = i }
+function selectStep(i) { activeStep.value = i; }
 
 function h(code) {
   // Usiamo attributi NON quotati (data-t=kw invece di class="syn-kw"):
@@ -87,7 +135,7 @@ function h(code) {
     .replace(/\b(WorkerManager|WorkerClient|FakeBackend|Flask|request|jsonify)\b/g,      '<span data-t=cls>$1</span>')
     .replace(/\b(parse_params|request_start|request_stop|start_worker|stop_worker|list_workers|recover_workers|dispose|for_testing|create_app|is_running|start_count|crash|print|time\.sleep)\b/g, '<span data-t=fn>$1</span>')
     .replace(/\$(.*$)/gm,  '<span data-t=cli>$$$1</span>')
-    .replace(/(#[^<\n]*)/g, '<span data-t=cm>$1</span>')
+    .replace(/(#[^<\n]*)/g, '<span data-t=cm>$1</span>');
 }
 
 const steps = [
@@ -103,7 +151,7 @@ duration = params.get('duration', 60)
 
 for _ in range(duration):
     time.sleep(1)`,
-    get html() { return h(this.raw) },
+    get html() { return h(this.raw); },
   },
   {
     label: '2. Manage from Python',
@@ -131,7 +179,7 @@ manager.stop_worker('job_1')
 
 # Recover crashed workers on startup
 restarted = manager.recover_workers()`,
-    get html() { return h(this.raw) },
+    get html() { return h(this.raw); },
   },
   {
     label: '3. Or use the CLI',
@@ -146,7 +194,7 @@ $ crazy-workers start my_worker \\
 $ crazy-workers stop job_1
 
 $ crazy-workers params job_1`,
-    get html() { return h(this.raw) },
+    get html() { return h(this.raw); },
   },
   {
     label: '4. Flask integration',
@@ -177,7 +225,7 @@ def create_app(db_engine, db_url):
         return (jsonify(result), 200) if ok else (jsonify({'error': result}), 400)
 
     return app`,
-    get html() { return h(this.raw) },
+    get html() { return h(this.raw); },
   },
   {
     label: '5. Test without processes',
@@ -195,14 +243,14 @@ def test_recovery_restarts_a_crash():
     assert manager.test.start_count('cam1') == 2
     assert manager.test.is_running('cam1')
     manager.dispose()`,
-    get html() { return h(this.raw) },
+    get html() { return h(this.raw); },
   },
-]
+];
 
 function copyCode() {
-  navigator.clipboard.writeText(steps[activeStep.value].raw)
-  justCopied.value = true
-  setTimeout(() => { justCopied.value = false }, 2000)
+  navigator.clipboard.writeText(steps[activeStep.value].raw);
+  justCopied.value = true;
+  setTimeout(() => { justCopied.value = false; }, 2000);
 }
 </script>
 
