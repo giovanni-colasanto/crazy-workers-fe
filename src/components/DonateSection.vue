@@ -66,7 +66,7 @@
           </div>
           <a
             class="dc-btn secondary"
-            href="https://buy.stripe.com/test_6oUcN5fzqazQ9eYezzgYU00"
+            href="https://buy.stripe.com/dRmeVdbiw2bD1HN5jscZa00"
             target="_blank"
           >
             Donate via Stripe
