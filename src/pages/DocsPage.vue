@@ -88,7 +88,7 @@
             </a>
             <a
               class="meta-pill"
-              href="https://github.com/Vanni-broUser/crazy-workers"
+              href="https://github.com/giovanni-colasanto/crazy-workers"
               target="_blank"
             >
               <v-icon
@@ -808,7 +808,7 @@
           <div class="support-row">
             <a
               class="support-btn"
-              href="https://github.com/sponsors/Vanni-broUser"
+              href="https://github.com/sponsors/giovanni-colasanto"
               target="_blank"
             >
               <v-icon
@@ -818,7 +818,7 @@
             </a>
             <a
               class="support-btn alt"
-              href="https://github.com/Vanni-broUser/crazy-workers"
+              href="https://github.com/giovanni-colasanto/crazy-workers"
               target="_blank"
             >
               <v-icon
@@ -842,7 +842,7 @@
           </RouterLink>
           <a
             class="pf-link"
-            href="https://github.com/Vanni-broUser/crazy-workers"
+            href="https://github.com/giovanni-colasanto/crazy-workers"
             target="_blank"
           >View source on GitHub <v-icon
             icon="mdi-github"
@@ -987,7 +987,7 @@ const pollingHelpers = [
 // ── Code samples ──
 const code = {
   install: 'pip install crazy-workers',
-  installSrc: `git clone https://github.com/Vanni-broUser/crazy-workers
+  installSrc: `git clone https://github.com/giovanni-colasanto/crazy-workers
 cd crazy-workers
 pip install .`,
   worker: `import time

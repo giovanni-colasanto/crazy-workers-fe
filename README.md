@@ -1,6 +1,6 @@
 # crazy-workers — Landing Page
 
-Official landing page for the [crazy-workers](https://github.com/Vanni-broUser/crazy-workers) Python library.
+Official landing page for the [crazy-workers](https://github.com/giovanni-colasanto/crazy-workers) Python library.
 
 Built with **Vue 3 + Vite + Vuetify 3 + Pinia**, featuring a cyberpunk dark theme.
 
@@ -73,7 +73,7 @@ public/
 
 ## Credits
 
-- Library by [Vanni-broUser](https://github.com/Vanni-broUser)
+- Library by [GioVanni Colasanto](https://github.com/giovanni-colasanto)
 - Website powered by [Fast-Site](https://fastsite.it)
 
 ---

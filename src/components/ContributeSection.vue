@@ -47,7 +47,7 @@
       <div class="reveal reveal-delay-3 contrib-ctas">
         <a
           class="contrib-btn primary"
-          href="https://github.com/Vanni-broUser/crazy-workers/issues"
+          href="https://github.com/giovanni-colasanto/crazy-workers/issues"
           target="_blank"
         >
           <v-icon
@@ -59,7 +59,7 @@
         </a>
         <a
           class="contrib-btn secondary"
-          href="https://github.com/Vanni-broUser/crazy-workers/blob/main/AI.md"
+          href="https://github.com/giovanni-colasanto/crazy-workers/blob/main/AI.md"
           target="_blank"
         >
           <v-icon

@@ -41,7 +41,7 @@
           </div>
           <a
             class="dc-btn primary"
-            href="https://github.com/sponsors/Vanni-broUser"
+            href="https://github.com/sponsors/giovanni-colasanto"
             target="_blank"
           >
             Sponsor on GitHub
@@ -81,7 +81,7 @@
         </div>
         <a
           class="star-btn"
-          href="https://github.com/Vanni-broUser/crazy-workers"
+          href="https://github.com/giovanni-colasanto/crazy-workers"
           target="_blank"
         >
           <v-icon

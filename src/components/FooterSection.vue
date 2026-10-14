@@ -7,7 +7,7 @@
         <div class="footer-icons">
           <a
             class="footer-icon"
-            href="https://github.com/Vanni-broUser/crazy-workers"
+            href="https://github.com/giovanni-colasanto/crazy-workers"
             target="_blank"
             title="GitHub"
           >
@@ -32,10 +32,10 @@
       <div class="footer-bottom-row">
         <span class="footer-copy">MIT License · Made with ❤ by
           <a
-            href="https://github.com/Vanni-broUser"
+            href="https://github.com/giovanni-colasanto"
             target="_blank"
             class="footer-link"
-          >Vanni-broUser</a>
+          >GioVanni Colasanto</a>
         </span>
         <span class="footer-sep">·</span>
         <a
