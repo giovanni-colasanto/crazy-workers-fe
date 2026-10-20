@@ -65,7 +65,7 @@
         </RouterLink>
         <a
           class="doc-btn secondary"
-          href="https://github.com/Vanni-broUser/crazy-workers"
+          href="https://github.com/giovanni-colasanto/crazy-workers"
           target="_blank"
         >
           <v-icon

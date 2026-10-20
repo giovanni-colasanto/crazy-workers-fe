@@ -75,7 +75,7 @@
       <div class="reveal reveal-delay-3 hero-ctas">
         <a
           class="cta-primary"
-          href="https://github.com/Vanni-broUser/crazy-workers"
+          href="https://github.com/giovanni-colasanto/crazy-workers"
           target="_blank"
         >
           <v-icon
@@ -266,8 +266,8 @@ const stats = [
 const badges = [
   { href: 'https://pypi.org/project/crazy-workers/', src: 'https://img.shields.io/pypi/v/crazy-workers?style=flat-square&color=00F5FF&labelColor=0E0E2A', alt: 'PyPI' },
   { href: 'https://pypi.org/project/crazy-workers/', src: 'https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square&labelColor=0E0E2A', alt: 'Python 3.10+' },
-  { href: 'https://github.com/Vanni-broUser/crazy-workers/blob/main/LICENSE', src: 'https://img.shields.io/badge/License-MIT-BF00FF?style=flat-square&labelColor=0E0E2A', alt: 'MIT' },
-  { href: 'https://github.com/Vanni-broUser/crazy-workers/actions', src: 'https://img.shields.io/github/actions/workflow/status/Vanni-broUser/crazy-workers/ci.yml?style=flat-square&label=CI&labelColor=0E0E2A', alt: 'CI' },
+  { href: 'https://github.com/giovanni-colasanto/crazy-workers/blob/main/LICENSE', src: 'https://img.shields.io/badge/License-MIT-BF00FF?style=flat-square&labelColor=0E0E2A', alt: 'MIT' },
+  { href: 'https://github.com/giovanni-colasanto/crazy-workers/actions', src: 'https://img.shields.io/github/actions/workflow/status/giovanni-colasanto/crazy-workers/ci.yml?style=flat-square&label=CI&labelColor=0E0E2A', alt: 'CI' },
 ];
 
 function scrollTo(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); }

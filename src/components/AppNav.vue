@@ -33,7 +33,7 @@
       <div class="nav-actions">
         <a
           class="icon-btn"
-          href="https://github.com/Vanni-broUser/crazy-workers"
+          href="https://github.com/giovanni-colasanto/crazy-workers"
           target="_blank"
           title="GitHub"
         >
@@ -99,7 +99,7 @@
         <div class="mobile-divider" />
         <a
           class="mobile-link"
-          href="https://github.com/Vanni-broUser/crazy-workers"
+          href="https://github.com/giovanni-colasanto/crazy-workers"
           target="_blank"
         >
           <v-icon
